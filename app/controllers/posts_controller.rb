@@ -1,7 +1,8 @@
 class PostsController < SideBarController
  
-  before_filter :is_super_user, :only => [:new, :edit, :create, :update, :destroy]  
+  before_filter :can_post, :only => [:new, :edit, :create, :update, :destroy]   
   before_filter :load_post!, :only => [:show, :edit, :update, :destroy]  
+  before_filter :can_edit, :only => [:edit, :update, :destroy]
 
   # GET /posts
   def index
@@ -25,7 +26,7 @@ class PostsController < SideBarController
   end
 
   # GET /posts/1/edit
-  def edit
+  def edit 
   end
 
   # POST /posts
@@ -70,13 +71,17 @@ class PostsController < SideBarController
 
 private
 
-  def is_super_user
-    redirect_to(posts_path) unless current_user.is_super_user
+  def can_post
+    redirect_to(posts_path) unless current_user.can_post
   end
 
   def load_post!
     @post = Post.find(params[:id])
     redirect_to(:action => 'index') if @post.nil?
+  end
+
+  def can_edit
+    redirect_to(@post) unless @post.user_id == current_user.id    
   end
 
 end

@@ -156,6 +156,7 @@ header h1{display:inline-block;background:#fff url(images/logo.png) no-repeat 3p
 #main #comments .comment{margin-top:10px;border-bottom-style:dotted}
 #main #add_comment{margin-top:10px}
 #main .new_post{display:block;margin-bottom:20px;}
+form{margin-bottom:20px}
  
 .small{font-size:0.8em}
 .left{border-right:#026880 solid 1px}

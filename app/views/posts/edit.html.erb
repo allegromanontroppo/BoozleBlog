@@ -1,6 +1,11 @@
-<h1>Editing post</h1>
+<% content_for :title do %> 
+  - Editing "<%= @post.title %>"
+<% end %>
+
+<h2>Editing "<%= @post.title %>"</h2>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<p>
+	<%= link_to 'Show', @post %> |
+	<%= link_to 'All posts', posts_path %>
+</p>
