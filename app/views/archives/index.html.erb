@@ -1,0 +1,5 @@
+<% content_for :title do %> 
+  - <%= month_name(@current_month) %>
+<% end %>
+<h2>Posts from <%= month_name(@current_month) %></h2>
+<%= render :partial => 'synopsis', :collection => @posts, :as => :post %>

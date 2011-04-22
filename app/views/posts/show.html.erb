@@ -1,0 +1,23 @@
+<% content_for :title do %> 
+  - <%= @post.title %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<%= render :partial => 'post', :object => @post, :locals => { :show_view_link => false } %>
+<div id="comments">
+	<h3>Comments</h3>
+	<%= render :partial => 'comment', :collection => @post.comments %>
+</div>
+<div id="add_comment">
+	<% form_for @comment do |f| %>
+		<p>
+		  	<%= f.label :body, "Add your comment" %><br/>
+		  	<%= f.text_area :body %>
+		</p>
+		<p>
+	  		<%= submit_tag "Post Comment" %>
+		</p>
+	  		<%= f.hidden_field :post_id %>
+	<% end %>
+</div>

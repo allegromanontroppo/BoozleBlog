@@ -1,0 +1,18 @@
+<% if post_counter % 2 == 0 %>
+<div class="teaser clearfix">
+<% end %>
+	<div>
+		<h3><%= link_to post.title, post %></h3>
+		<time datetime="<%= post.created_at %>"><%= post.date_pretty %></time>
+		<article>
+			<%= truncate post.body, :length => 50 %>
+		</article>
+		<div class="small">
+			<p>
+				<%= link_to "View", post, :class => 'view' %>
+			</p>
+		</div>
+	</div>
+<% if post_counter % 2 == 1 %>
+</div>
+<% end %>

@@ -1,0 +1,23 @@
+<% content_for :content do %>
+<div class="clearfix">
+	<div class="left">
+		<%= yield %>
+	</div>
+	<div class="right">
+		<%= link_to_if current_user.can_post, 'Create New Post', new_post_path, :class => "new_post" %>
+		<nav class="archives">
+		<h4>Archives</h4>
+		<ul>
+			<%= render :partial => 'archive_link', :collection => @archives %>
+		</ul>
+		</nav>
+		<nav class="tags">
+		<h4>Tags</h4>
+		<ul>
+			<%= render :partial => 'tag_link', :collection => @tags %>
+		</ul>
+		</nav>
+	</div>
+</div>
+<% end %>
+<%= render :file => 'layouts/application' %>

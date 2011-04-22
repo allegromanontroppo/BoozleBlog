@@ -1,0 +1,22 @@
+<article id="post">
+	<h2><%= link_to post.title, post %></h2>
+	<h4><time datetime="<%= post.created_at %>"><%= post.date_pretty %></time></h4>
+	<div id="body">
+		<%= simple_format auto_link post.body %>
+	</div>
+	<div class="small">
+		<% if show_view_link %>
+		<p>
+			<%= link_to "View", post, :class => 'view' %>
+			<%= link_to_if current_user.is_super_user || post.user_id == current_user.id, 'Edit', edit_post_path(post) %>
+		</p>
+		<% end %>
+		<p>
+			Comments: <%= link_to post.comments.count, post_path(post, :anchor => 'comments') %> | 
+			Posted by: <%= link_to post.user.name, post.user %>
+		</p>
+		<p>
+			Tags: <%= raw tags_list(post.tags)%> 
+		</p>
+	</div>
+</article>

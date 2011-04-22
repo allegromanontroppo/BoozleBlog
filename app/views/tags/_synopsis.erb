@@ -1,0 +1,12 @@
+<div class="synopsis">
+	<h3><%= link_to post.title, post %></h3>
+	<h4><time datetime="<%= post.created_at %>"><%= post.date_pretty %></time></h4>
+	<article>
+		<%= truncate post.body, :length => 150 %>
+	</article>
+	<div class="small">
+		<p>
+			<%= link_to "View", post, :class => 'view' %>
+		</p>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+<% unless @posts.empty? %>
+<div>
+	<%= render :partial => 'post', :object => @posts.first, :locals => { :show_view_link => true } %>
+</div>
+<% end %>
+<div id="teasers">
+	<%= render :partial => 'teaser', :collection => @posts.drop(1), :as => :post %>
+</div>
