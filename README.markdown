@@ -1,0 +1,1 @@
+A private blogging platform created in order to privately share pictures and videos of my daughter with her grandparents.
