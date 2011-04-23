@@ -26,7 +26,7 @@ class PostsController < SideBarController
     @post.user_id = current_user.id
 
     @post.images = []
-    5.times { |i| @post.images << Image.new }
+    10.times { |i| @post.images << Image.new }
   end
 
   # GET /posts/1/edit
@@ -45,16 +45,21 @@ class PostsController < SideBarController
               @post.tags << t
            end  
 
-    v = Video.new
-    v.embed = params[:video]
-    @post.videos = [v]
+    @post.videos = []
+    unless params[:video].blank?
+        v = Video.new
+        v.embed = params[:video]
+        @post.videos << v
+    end
 
     @post.images = []
     params.each do |key, value| 
       if key.starts_with? 'photo'
-        p = Image.new
-        p.url = value
-        @post.images << p
+        unless value.blank?
+          p = Image.new
+          p.url = value
+          @post.images << p
+        end
       end
     end
 
@@ -75,16 +80,21 @@ class PostsController < SideBarController
           t
        end  
 
-    v = Video.new
-    v.embed = params[:video]
-    @post.videos = [v]
+    @post.videos = []
+    unless params[:video].blank?
+        v = Video.new
+        v.embed = params[:video]
+        @post.videos << v
+    end
 
     @post.images = []
     params.each do |key, value| 
       if key.starts_with? 'photo'
-        p = Image.new
-        p.url = value
-        @post.images << p
+        unless value.blank?
+          p = Image.new
+          p.url = value
+          @post.images << p
+        end
       end
     end
        

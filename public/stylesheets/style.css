@@ -133,10 +133,11 @@ input[type=text],input[type=url],textarea{width:90%}
 textarea{height:100px}
 
 body{background-image:url(images/octonauts_pattern.jpg)}
-#outer_container{margin:0 auto;padding-bottom:100px;width:1000px;min-height:1350px;background:#7CC5D6 url(images/webback.jpg) repeat-y}
+#outer_container{margin:0 auto;width:1000px;min-height:1350px;background:#7CC5D6}
 #inner_container{margin:0 50px}
 header{text-align:center}
 header h1{display:inline-block;background:#fff url(images/logo.png) no-repeat 3px 3px;border:#026880 solid 8px;-moz-border-radius:25px;border-radius:25px;padding:3px 5px 3px 62px;margin:40px auto}
+footer{height:50px}
 
 
 #main{background:#fff;border:#026880 solid 8px;-moz-border-radius:25px;border-radius:25px;padding:20px}
@@ -160,6 +161,7 @@ form{margin-bottom:20px}
  
 img.avatar{float:left;height:60px;margin-right:10px}
 #notice{background:#AEB404}
+#error_explanation{color:red}
 .thats_you{font-size:0.7em}
 .small{font-size:0.8em;margin-top:10px}
 .left{border-right:#026880 solid 1px}
