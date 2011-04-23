@@ -26,6 +26,7 @@
       	<h1><%= link_to 'Boozle blog', :root %></h1>
       </header>
       <div id="main" role="main" class="clearfix">
+        <p id="notice"><%= notice %></p>
   		  <%= content_for?(:content) ? yield(:content) : yield %>
       </div>
       <footer>

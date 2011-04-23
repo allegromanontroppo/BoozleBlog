@@ -20,4 +20,12 @@ class Post < ActiveRecord::Base
 		self[:created_at].strftime("%A #{self[:created_at].day.ordinalize} %B %Y")
 	end
 	
+	def previous_post
+	  self.class.first(:conditions => ["created_at < ?", created_at], :order => "created_at desc")
+	end
+
+	def next_post
+	  self.class.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
+	end
+	
 end

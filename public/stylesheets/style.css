@@ -160,8 +160,10 @@ footer{height:50px}
 form{margin-bottom:20px}
  
 img.avatar{float:left;height:60px;margin-right:10px}
-#notice{background:#AEB404}
+#notice{background:#7CC5D6}
 #error_explanation{color:red}
+#previous_next{float:right}
+#previous_next a{margin-left:2px}
 .thats_you{font-size:0.7em}
 .small{font-size:0.8em;margin-top:10px}
 .left{border-right:#026880 solid 1px}

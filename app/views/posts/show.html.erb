@@ -2,7 +2,10 @@
   - <%= @post.title %>
 <% end %>
 
-<p id="notice"><%= notice %></p>
+<div id="previous_next">
+	<%= link_to("Previous Post", @post.previous_post) if @post.previous_post %>
+	<%= link_to("Next Post", @post.next_post) if @post.next_post %>
+</div>
 
 <%= render :partial => 'post', :object => @post, :locals => { :show_view_link => false } %>
 <div id="comments">
