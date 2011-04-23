@@ -4,7 +4,11 @@
 		<%= yield %>
 	</div>
 	<div class="right">
-		<%= link_to_if current_user.can_post, 'Create New Post', new_post_path, :class => "new_post" %>
+		<nav class="my_account">
+			<%= link_to_if current_user.can_post, 'Create New Post', new_post_path %>
+			<br/>
+			<%= link_to 'My Account', user_path(current_user)%>
+		</nav>
 		<nav class="archives">
 		<h4>Archives</h4>
 		<ul>

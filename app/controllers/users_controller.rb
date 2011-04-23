@@ -7,7 +7,8 @@ class UsersController < LoggedInController
   end
 
   def show
-
+    @posts = Post.where(:id => 0) # Post.where(:user_id => @user.id).order('created_at desc').includes(:comments, :tags)
+    @comments = Comment.where(:user_id => @user.id).order('created_at desc').includes(:post)
   end
 
   def edit

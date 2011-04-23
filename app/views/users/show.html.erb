@@ -1,6 +1,18 @@
 <% content_for :title do %> 
   - <%= @user.name %>
 <% end %>
-<h2><%= @user.name %></h2>
+<h2><%= @user.name %>
+<% if @user.id == current_user.id %>
+	<span class="thats_you">(That's you!)</span>
+<% end %>
+</h2>
+<p><%= image_tag "/images/avatars/#{@user.avatar}" %></p>
 
-<p><%= @user.avatar %></p>
+<% unless @posts.empty? %>
+<h3><%= @user.name %>'s posts</h3>
+<%= render :partial => 'synopsis', :collection => @posts, :as => :post %>
+<% end %>
+<% unless @comments.empty? %>
+<h3><%= @user.name %>'s comments</h3>
+<%= render :partial => 'comment', :collection => @comments, :as => :comment %>
+<% end %>
