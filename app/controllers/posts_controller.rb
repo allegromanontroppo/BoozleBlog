@@ -69,6 +69,19 @@ class PostsController < SideBarController
     redirect_to(posts_url) 
   end
 
+  def add_comment
+
+    @comment = Comment.new(params[:comment])
+    @comment.user_id = current_user.id
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to post_path(@comment.post_id) }
+        format.js
+      end     
+    end 
+
+  end
+
 private
 
   def can_post

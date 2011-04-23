@@ -154,7 +154,7 @@ header h1{display:inline-block;background:#fff url(images/logo.png) no-repeat 3p
 #main div#body{margin:10px 0 20px 0}
 #main #comments{margin-top:16px}
 #main #comments .comment{margin-top:10px;border-bottom-style:dotted}
-#main #add_comment{margin-top:10px}
+#main #new_comment{margin-top:10px}
 #main nav.my_account{display:block;margin-bottom:20px;}
 form{margin-bottom:20px}
  

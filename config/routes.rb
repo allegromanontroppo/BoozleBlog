@@ -4,7 +4,7 @@ Rebeccaholland::Application.routes.draw do
   resources :posts
   match 'users/' => 'users#index', :as => :users
   match 'users/:id' => 'users#show', :as => :user
-  match 'comments/create' => 'comments#create', :as => :comments
+  match 'posts/add_comment' => 'posts#add_comment', :as => :add_comment
   match 'tags/' => 'tags#index', :as => :tags
   match 'tags/:id' => 'tags#show', :as => :tag
   match 'archives/:year/:month' => 'archives#index', :as => :archives
