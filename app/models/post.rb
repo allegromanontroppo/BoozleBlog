@@ -1,9 +1,9 @@
 class Post < ActiveRecord::Base
 	belongs_to :user
-	has_many :comments
-	has_many :tags
-	has_many :images
-	has_many :videos
+	has_many :comments, :dependent => :delete_all 
+	has_many :tags, :dependent => :delete_all 
+	has_many :images, :dependent => :delete_all 
+	has_many :videos, :dependent => :delete_all 
 
 	def to_param
 		"#{id} #{title}".parameterize 

@@ -1,4 +1,4 @@
-<% if post_counter % 2 == 0 %>
+<% if post_counter.even? %>
 <div class="teaser clearfix">
 <% end %>
 	<div>
@@ -13,6 +13,6 @@
 			</p>
 		</div>
 	</div>
-<% if post_counter % 2 == 1 %>
+<% if post_counter.odd? %>
 </div>
 <% end %>

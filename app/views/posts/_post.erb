@@ -3,14 +3,21 @@
 	<h4><time datetime="<%= post.created_at %>"><%= post.date_pretty %></time></h4>
 	<div id="body">
 		<%= simple_format auto_link post.body %>
+
+		<% post.videos.each do |video| %>
+			<%= raw video.embed %>
+		<% end %>
+
+		<% post.images.each do |image| %>
+			<%= raw image.url %>
+		<% end %>
 	</div>
 	<div class="small">
-		<% if show_view_link %>
 		<p>
-			<%= link_to "View", post, :class => 'view' %>
-			<%= link_to_if current_user.is_super_user || post.user_id == current_user.id, 'Edit', edit_post_path(post) %>
+			<%= link_to_if show_view_link, "View", post, :class => 'view' do end %>
+			<%= link_to_if current_user.is_super_user || post.user_id == current_user.id, 'Edit', edit_post_path(post) do end  %>
+			<%= link_to_if current_user.is_super_user || post.user_id == current_user.id, 'Delete', post, :method => :delete, :confirm => "Are you sure?" do end  %>
 		</p>
-		<% end %>
 		<p>
 			Comments: <%= link_to post.comments.count, post_path(post, :anchor => 'comments') %> | 
 			Posted by: <%= link_to post.user.name, post.user %>

@@ -63,8 +63,8 @@ input:invalid, textarea:invalid { border-radius:1px; -moz-box-shadow:0px 0px 5px
 .no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color:#f0dddd; }
 
 
-::-moz-selection{ background:#FF5E99; color:#fff; text-shadow:none; }
-::selection { background:#FF5E99; color:#fff; text-shadow:none; }
+::-moz-selection{ background:#AEB404; color:#fff; text-shadow:none; }
+::selection { background:#AEB404; color:#fff; text-shadow:none; }
 a:link { -webkit-tap-highlight-color:#FF5E99; }
 button {  width:auto; overflow:visible; }
 .ie7 img { -ms-interpolation-mode:bicubic; }
@@ -129,18 +129,18 @@ h3{font-size:1.3em}
 h4{font-size:1.0em} 
 p{margin-bottom:0.5em}
 
-input[type=text],textarea{width:250px}
-textarea{height:100px;width:90%}
+input[type=text],input[type=url],textarea{width:90%}
+textarea{height:100px}
 
 body{background-image:url(images/octonauts_pattern.jpg)}
-#outer_container{margin:0 auto;width:1000px;height:1350px;background:#7CC5D6 url(images/webback.jpg) bottom}
+#outer_container{margin:0 auto;padding-bottom:100px;width:1000px;min-height:1350px;background:#7CC5D6 url(images/webback.jpg) repeat-y}
 #inner_container{margin:0 50px}
 header{text-align:center}
 header h1{display:inline-block;background:#fff url(images/logo.png) no-repeat 3px 3px;border:#026880 solid 8px;-moz-border-radius:25px;border-radius:25px;padding:3px 5px 3px 62px;margin:40px auto}
 
 
 #main{background:#fff;border:#026880 solid 8px;-moz-border-radius:25px;border-radius:25px;padding:20px}
-#main div.left{float:left;width:670px}
+#main div.left{float:left;width:650px;padding-right:20px}
 #main div.right{float:right;width:150px;margin-left:20px}
 #main time{font:1.1em 'OldStandardTTBold', Arial, sans-serif;letter-spacing:0}
 #main div#teasers{margin:20px 0}
@@ -149,8 +149,8 @@ header h1{display:inline-block;background:#fff url(images/logo.png) no-repeat 3p
 #main div#teasers time{font-size:0.9em;text-transform:none}
 #main div#teasers article{margin:2px 0}
 #main nav.tags{margin-top:20px}
-#main article#post, #main #comments .comment{border-bottom:#026880 solid 1px;padding-bottom:14px;margin-right:20px}
-#main div.synopsis{border-bottom:#026880 dotted 1px;padding-bottom:14px;margin:20px 20px 0 0}
+#main article#post, #main #comments .comment{border-bottom:#026880 solid 1px;padding-bottom:14px}
+#main div.synopsis{border-bottom:#026880 dotted 1px;padding-bottom:14px;margin-top:20px}
 #main div#body{margin:10px 0 20px 0}
 #main #comments{margin-top:16px}
 #main #comments .comment{margin-top:10px;border-bottom-style:dotted}
@@ -159,6 +159,7 @@ header h1{display:inline-block;background:#fff url(images/logo.png) no-repeat 3p
 form{margin-bottom:20px}
  
 img.avatar{float:left;height:60px;margin-right:10px}
+#notice{background:#AEB404}
 .thats_you{font-size:0.7em}
 .small{font-size:0.8em;margin-top:10px}
 .left{border-right:#026880 solid 1px}

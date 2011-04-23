@@ -20,8 +20,14 @@
   </p>
   <p>
     <%= label_tag :tags_list, "This post's tags" %><br/>
-    <%= text_field_tag :tags_list %>
+    <%= text_field_tag :tags_list, (@post.tags.map{|t| t.tag}.join(", ") if @post.tags.any?) %>
   </p>
+  <p>
+    <%= label_tag :video, "Embed a video" %><br/>
+    <%= text_area_tag :video, (@post.videos.first.embed if @post.videos.any?) %>
+  </p>
+  <%= render :partial => 'form_photo', :collection => @post.images, :as => :photo %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

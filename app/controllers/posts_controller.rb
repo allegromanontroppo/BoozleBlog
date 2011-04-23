@@ -7,7 +7,8 @@ class PostsController < SideBarController
   # GET /posts
   def index
 
-    @posts = Post.order("posts.created_at DESC").limit(7).includes(:comments, :user, :tags)    
+    @posts = Post.order("posts.created_at DESC").limit(7).includes(:comments, :user, :tags, :videos, :images)   
+    @posts.pop if @posts.length.even?
 
   end
 
@@ -23,6 +24,9 @@ class PostsController < SideBarController
   def new
     @post = Post.new
     @post.user_id = current_user.id
+
+    @post.images = []
+    5.times { |i| @post.images << Image.new }
   end
 
   # GET /posts/1/edit
@@ -32,11 +36,27 @@ class PostsController < SideBarController
   # POST /posts
   def create
     @post = Post.new(params[:post])
-    @post.tags =  params[:tags_list].split(',').select{|tag| !tag.blank?}.map do |tag|
+    @post.user_id = current_user.id
+
+    @post.tags = []
+    params[:tags_list].split(',').select{|tag| !tag.blank?}.map do |tag|
               t = Tag.new
               t.tag = tag.strip
-              t
+              @post.tags << t
            end  
+
+    v = Video.new
+    v.embed = params[:video]
+    @post.videos = [v]
+
+    @post.images = []
+    params.each do |key, value| 
+      if key.starts_with? 'photo'
+        p = Image.new
+        p.url = value
+        @post.images << p
+      end
+    end
 
     if @post.save
       redirect_to(@post, :notice => 'Post was successfully created.')
@@ -54,6 +74,19 @@ class PostsController < SideBarController
           t.tag = tag.strip
           t
        end  
+
+    v = Video.new
+    v.embed = params[:video]
+    @post.videos = [v]
+
+    @post.images = []
+    params.each do |key, value| 
+      if key.starts_with? 'photo'
+        p = Image.new
+        p.url = value
+        @post.images << p
+      end
+    end
        
     if @post.update_attributes(params[:post])
       redirect_to(@post, :notice => 'Post was successfully updated.') 
@@ -66,7 +99,12 @@ class PostsController < SideBarController
   # DELETE /posts/1.xml
   def destroy
     @post.destroy
-    redirect_to(posts_url) 
+
+    respond_to do |format|
+      format.html { redirect_to(posts_url)  }
+      format.js 
+    end
+    
   end
 
   def add_comment
@@ -89,7 +127,7 @@ private
   end
 
   def load_post!
-    @post = Post.find(params[:id])
+    @post = Post.includes(:comments, :user, :tags, :videos, :images).find(params[:id])
     redirect_to(:action => 'index') if @post.nil?
   end
 
