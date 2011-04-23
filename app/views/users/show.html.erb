@@ -7,12 +7,3 @@
 <% end %>
 </h2>
 <p><%= image_tag "/images/avatars/#{@user.avatar}" %></p>
-
-<% unless @posts.empty? %>
-<h3><%= @user.name %>'s posts</h3>
-<%= render :partial => 'synopsis', :collection => @posts, :as => :post %>
-<% end %>
-<% unless @comments.empty? %>
-<h3><%= @user.name %>'s comments</h3>
-<%= render :partial => 'comment', :collection => @comments, :as => :comment %>
-<% end %>
