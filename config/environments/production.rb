@@ -39,11 +39,11 @@ Rebeccaholland::Application.configure do
   config.action_mailer.default_url_options = { :host => 'rebeccaholland.org' }
 
    config.action_mailer.smtp_settings = {
-     :address => "mail.rebeccaholland.org",
+     :address => "",
      :port => 25,
-     :domain => "rebeccaholland.org",
-     :user_name => "membership@rebeccaholland.org",
-     :password => "O#K6UFW82TxMwD_Lb",
+     :domain => "",
+     :user_name => "",
+     :password => "",
      :authentication => :login,
      :enable_starttls_auto => true,
      :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE
