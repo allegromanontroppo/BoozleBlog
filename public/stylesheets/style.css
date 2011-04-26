@@ -74,9 +74,6 @@ h1, h2, h3, h4, h5, h6 { font-weight:bold; }
 a, a:active, a:visited { color:#026880; }
 a:hover { color:#036; }
 
-
-
-
 @font-face {
     font-family:'OldStandardTTRegular';
     src:url('fonts/OldStandard-Regular-webfont.eot');
@@ -114,7 +111,6 @@ a:hover { color:#036; }
 }
 
 
-
 /**
  * Primary styles
  *
@@ -133,12 +129,11 @@ input[type=text],input[type=url],textarea{width:90%}
 textarea{height:100px}
 
 body{background-image:url(images/octonauts_pattern.jpg)}
-#outer_container{margin:0 auto;width:1000px;min-height:1350px;background:#7CC5D6}
+#outer_container{margin:0 auto;width:1000px;min-height:1000px;background:#7CC5D6 url(images/webback_sm.jpg) repeat-y}
 #inner_container{margin:0 50px}
 header{text-align:center}
 header h1{display:inline-block;background:#fff url(images/logo.png) no-repeat 3px 3px;border:#026880 solid 8px;-moz-border-radius:25px;border-radius:25px;padding:3px 5px 3px 62px;margin:40px auto}
 footer{height:50px}
-
 
 #main{background:#fff;border:#026880 solid 8px;-moz-border-radius:25px;border-radius:25px;padding:20px}
 #main div.left{float:left;width:650px;padding-right:20px}
@@ -146,9 +141,10 @@ footer{height:50px}
 #main time{font:1.1em 'OldStandardTTBold', Arial, sans-serif;letter-spacing:0}
 #main div#teasers{margin:20px 0}
 #main div#teasers div.teaser{margin-bottom:15px;padding-bottom:15px;border-bottom:#026880 dotted 1px}
-#main div#teasers div.teaser div{float:left;width:49%}
+#main div#teasers div.teaser div{float:left;width:48%}
 #main div#teasers time{font-size:0.9em;text-transform:none}
 #main div#teasers article{margin:2px 0}
+#main div#teasers .teaser_right{margin-left:1%}
 #main nav.tags{margin-top:20px}
 #main article#post, #main #comments .comment{border-bottom:#026880 solid 1px;padding-bottom:14px}
 #main div.synopsis{border-bottom:#026880 dotted 1px;padding-bottom:14px;margin-top:20px}
@@ -160,7 +156,7 @@ footer{height:50px}
 form{margin-bottom:20px}
  
 img.avatar{float:left;height:60px;margin-right:10px}
-#notice{background:#7CC5D6}
+#notice{color:#026880;font:1.2em/1em 'OldStandardTTBold', Arial, sans-serif;letter-spacing:0;text-transform:uppercase;margin-bottom:1em;background:#fff;border:#026880 solid 2px;-moz-border-radius:8px;border-radius:8px;padding:3px 5px}
 #error_explanation{color:red}
 #previous_next{float:right}
 #previous_next a{margin-left:2px}
@@ -176,8 +172,6 @@ img.avatar{float:left;height:60px;margin-right:10px}
 .clearfix:before, .clearfix:after { content:"\0020"; display:block; height:0; overflow:hidden; }
 .clearfix:after { clear:both; }
 .clearfix { zoom:1; }
-
-
 
 
 @media all and (orientation:portrait) {

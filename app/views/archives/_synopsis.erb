@@ -2,7 +2,7 @@
 	<h3><%= link_to post.title, post %></h3>
 	<p><time datetime="<%= post.created_at %>"><%= post.date_pretty %></time></p>
 	<article>
-		<%= truncate post.body, :length => 150 %>
+		<%= simple_format truncate post.body, :length => 150 %>
 	</article>
 	<div class="small">
 		<p>

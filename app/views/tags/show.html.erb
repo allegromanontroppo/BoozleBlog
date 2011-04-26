@@ -1,6 +1,6 @@
 <% content_for :title do %> 
   - Posts tagged with "<%= @tag %>"
 <% end %>
-<h2><%= @posts.count %> posts tagged with "<%= @tag %>"</h2>
+<h2><%= pluralize(@posts.count, 'post') %> tagged with "<%= @tag %>"</h2>
 
 <%= render :partial => 'synopsis', :collection => @posts, :as => :post %>

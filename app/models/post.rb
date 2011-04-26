@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   	validates_presence_of :title
   	validates_presence_of :body
   	validates_associated :comments
-  	validates_associated :tags
+  #	validates_associated :tag
   	validates_associated :images
   	validates_associated :videos
 

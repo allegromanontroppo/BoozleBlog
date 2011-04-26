@@ -3,10 +3,10 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "please-change-me@config-initializers-devise.com"
+  config.mailer_sender = "membership@rebeccaholland.org"
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = "Devise::Mailer"
+  config.mailer = "Devise::Mailer"
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -172,7 +172,7 @@ Devise.setup do |config|
   #
   # The :"*/*" and "*/*" formats below is required to match Internet
   # Explorer requests.
-  # config.navigational_formats = [:"*/*", "*/*", :html]
+   config.navigational_formats = [:"*/*", "*/*", :html]
 
   # The default HTTP method used to sign out a resource. Default is :get.
   # config.sign_out_via = :get

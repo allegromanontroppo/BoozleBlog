@@ -2,12 +2,12 @@ Rebeccaholland::Application.routes.draw do
 
   devise_for :users
   resources :posts
-  match 'users/' => 'users#index', :as => :users
-  match 'users/:id' => 'users#show', :as => :user
-  match 'posts/add_comment' => 'posts#add_comment', :as => :add_comment
-  match 'tags/' => 'tags#index', :as => :tags
-  match 'tags/:id' => 'tags#show', :as => :tag
-  match 'archives/:year/:month' => 'archives#index', :as => :archives
+  get 'users/' => 'users#index', :as => :users
+  get 'users/:id' => 'users#show', :as => :user
+  post 'posts/add_comment' => 'posts#add_comment', :as => :add_comment
+  get 'tags/' => 'tags#index', :as => :tags
+  get 'tags/:id' => 'tags#show', :as => :tag
+  get 'archives/:year/:month' => 'archives#index', :as => :archives
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,11 +1,15 @@
 <% if post_counter.even? %>
 <div class="teaser clearfix">
 <% end %>
+	<% if post_counter.even? %>
 	<div>
+	<% else %>
+	<div class="teaser_right">
+	<% end %>
 		<h3><%= link_to post.title, post %></h3>
 		<time datetime="<%= post.created_at %>"><%= post.date_pretty %></time>
 		<article>
-			<%= truncate post.body, :length => 50 %>
+			<%= simple_format truncate post.body, :length => 100 %>
 		</article>
 		<div class="small">
 			<p>
