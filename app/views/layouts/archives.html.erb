@@ -9,7 +9,7 @@
 			<br />
 			<%= link_to_if user_signed_in?, 'Log out', destroy_user_session_path %>
 			<br/>
-			<%= link_to ('Create New Post', new_post_path) if current_user.can_post %>
+			<%= link_to('Create New Post', new_post_path) if current_user.can_post %>
 		</nav>
 		<nav class="space">
 		<h4>Recent Comments</h4>
