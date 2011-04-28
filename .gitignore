@@ -2,5 +2,7 @@
 db/*.sqlite3
 log/*.log
 tmp/
-Thumbs.db
-config/*
+config/database.yml
+config/environments/production.rb
+config/initializers/secret_token.rb
+*Thumbs.db
