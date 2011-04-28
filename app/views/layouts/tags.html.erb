@@ -4,23 +4,29 @@
 		<%= yield %>
 	</div>
 	<div class="right">
-		<nav class="my_account">
+		<nav>
 			<%= link_to 'My Account', user_path(current_user)%>
 			<br />
 			<%= link_to_if user_signed_in?, 'Log out', destroy_user_session_path %>
 			<br/>
 			<%= link_to ('Create New Post', new_post_path) if current_user.can_post %>
 		</nav>
-		<nav class="archives">
-		<h4>Archives</h4>
+		<nav class="space">
+		<h4>Recent Comments</h4>
 		<ul>
-			<%= render :partial => 'archive_link', :collection => @archives %>
+			<%= render :partial => 'recent_comment_link', :collection => @recent_comments, :as => :recent_comment %>
 		</ul>
 		</nav>
-		<nav class="tags">
+		<nav class="space">
+		<h4>Archives</h4>
+		<ul>
+			<%= render :partial => 'archive_link', :collection => @archives, :as => :archive  %>
+		</ul>
+		</nav>
+		<nav class="space">
 		<h4>Tags</h4>
 		<ul>
-			<%= render :partial => 'tag_link', :collection => @tags %>
+			<%= render :partial => 'tag_link', :collection => @tags, :as => :tag %>
 		</ul>
 		</nav>
 	</div>

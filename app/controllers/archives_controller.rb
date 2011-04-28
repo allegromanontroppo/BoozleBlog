@@ -3,7 +3,7 @@ class ArchivesController < SideBarController
 	before_filter :extract_current_month_from_url
   	
 	def index
-		@posts = Post.includes(:comments, :user, :tags).where(:created_at => (@current_month)..(@current_month + 1.month))
+		@posts = Post.includes(:comments, :user, :tags).where(:created_at => (@current_month)..(@current_month + 1.month)).order('created_at DESC')
 		redirect_to(:action => 'index') if @posts.empty?
 	end
 

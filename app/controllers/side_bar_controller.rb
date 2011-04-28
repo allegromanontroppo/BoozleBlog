@@ -12,6 +12,8 @@ class SideBarController < LoggedInController
 
 	    @tags = Tag.select("tag, count(*) as count").order("count desc, tag").group("tag")
 
+	    @recent_comments = Comment.order("created_at DESC").limit(5).includes(:user, :post)
+
   end
 
 end

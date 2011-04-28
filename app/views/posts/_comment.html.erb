@@ -1,7 +1,7 @@
-<div class="comment" id="comment_<%= comment.id %>">
+<div class="comment" id="comment-<%= comment.id %>">
 	<div class="clearfix">
 		<%= 
-		 link_to(comment.user) do 
+		 link_to(comment.user, :title => comment.user.name) do 
 			image_tag "/images/avatars/#{comment.user.avatar}", :class => "avatar clearfix"
 		 end
 		%>
