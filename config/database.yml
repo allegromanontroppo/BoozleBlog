@@ -19,8 +19,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: true
-  database: XXX
+  database: 
   pool: 5
-  username: XXX 
-  password: XXXX
+  username: 
+  password: 
   socket: /tmp/mysql.sock
