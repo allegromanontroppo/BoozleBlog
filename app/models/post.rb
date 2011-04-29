@@ -21,11 +21,17 @@ class Post < ActiveRecord::Base
 	end
 	
 	def previous_post
-	  self.class.first(:conditions => ["created_at < ?", created_at], :order => "created_at desc")
+	  if @previous_post.nil?
+  	    @previous_post = self.class.first(:conditions => ["created_at < ?", created_at], :order => "created_at desc")
+	  end
+	  @previous_post
 	end
 
 	def next_post
-	  self.class.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
+	  if @next_post.nil?
+	    @next_post = self.class.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
+	  end
+	  @next_post
 	end
 	
 end

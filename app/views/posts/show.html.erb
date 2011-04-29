@@ -3,8 +3,8 @@
 <% end %>
 
 <div id="previous_next">
-	<%= link_to("Previous Post", @post.previous_post) if @post.previous_post %>
-	<%= link_to("Next Post", @post.next_post) if @post.next_post %>
+	<%= link_to("<< #{@post.previous_post.title}", @post.previous_post) if @post.previous_post %>
+	<%= link_to("#{@post.next_post.title} >>", @post.next_post) if @post.next_post %>
 </div>
 
 <%= render :partial => 'post', :object => @post, :locals => { :show_view_link => false } %>
