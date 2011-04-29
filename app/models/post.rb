@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
   	validates_associated :videos
 
 	def to_param
-		"#{id} #{title}".parameterize 
+		"#{self.id} #{self.title}".parameterize 
 	end
 
 	def date_pretty

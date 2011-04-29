@@ -8,7 +8,7 @@ class Tag < ActiveRecord::Base
   	end
 
 	def to_param
-		"#{tag}".parameterize 
+     "#{self.tag}".parameterize
   	end
 
 end
