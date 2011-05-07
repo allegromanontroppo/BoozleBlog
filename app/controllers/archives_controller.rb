@@ -14,13 +14,13 @@ private
 	    if is_valid_year? params[:year]
 	      year = params[:year].to_i
 	    else
-	      redirect_to archives_path(:year => Time.new.year, :month => Time.new.month) and return
+	      redirect_to archives_url(:year => Time.new.year, :month => Time.new.month) and return
 	    end
 
 	    if is_valid_month? params[:month]
 	      month = params[:month].to_i
 	    else
-	      redirect_to archives_path(:year => year, :month => Time.new.month) and return
+	      redirect_to archives_url(:year => year, :month => Time.new.month) and return
 	    end
 
 	    @current_month = Time.local(year, month, 1)

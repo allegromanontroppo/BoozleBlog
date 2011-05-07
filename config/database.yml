@@ -21,6 +21,6 @@ production:
   reconnect: true
   database: 
   pool: 5
-  username: 
+  username:  
   password: 
   socket: /tmp/mysql.sock

@@ -1,5 +1,6 @@
 class NewPostMailer < ActionMailer::Base
-  default :from => "notifications@rebeccaholland.org"
+  default :from => "membership@rebeccaholland.org"
+  default_url_options[:host] = "www.rebeccaholland.org"
   
   def new_post_notification(user, post)
         
