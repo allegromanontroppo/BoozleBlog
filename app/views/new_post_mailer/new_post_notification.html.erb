@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>There's a new post on the Boozle Blog, <%= link_to @post.title, post_path(@post, :host => 'www.rebeccaholland.org') %></h1>
+    <p>
+      <%= truncate @post.body, :length => 100 %>
+    </p>
+  </body>
+</html>
