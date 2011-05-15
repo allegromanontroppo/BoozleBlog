@@ -14,19 +14,19 @@
 		<nav class="space">
 		<h4>Recent Comments</h4>
 		<ul>
-			<%= render :partial => 'recent_comment_link', :collection => @recent_comments, :as => :recent_comment %>
+			<%= render :partial => 'shared/recent_comment_link', :collection => @recent_comments, :as => :recent_comment %>
 		</ul>
 		</nav>
 		<nav class="space">
 		<h4>Archives</h4>
 		<ul>
-			<%= render :partial => 'archive_link', :collection => @archives, :as => :archive  %>
+			<%= render :partial => 'shared/archive_link', :collection => @archives, :as => :archive  %>
 		</ul>
 		</nav>
 		<nav class="space">
 		<h4>Tags</h4>
 		<ul>
-			<%= render :partial => 'tag_link', :collection => @tags, :as => :tag %>
+			<%= render :partial => 'shared/tag_link', :collection => @tags, :as => :tag %>
 		</ul>
 		</nav>
 	</div>
