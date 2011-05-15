@@ -1,6 +1,6 @@
 class SideBarController < LoggedInController
 
-	before_filter :load_archive_and_tags!, :except => [:create, :upate, :destroy]
+	before_filter :load_archive_and_tags!, :except => [:create, :update, :destroy]
 
  private 
 

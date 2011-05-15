@@ -27,7 +27,7 @@ private
 
 	end
 
-	def is_valid_year?(year_str, pre=1990, post=Time.new.year)
+	def is_valid_year?(year_str, pre = 1990, post = Time.new.year)
 		/^(\d)+$/.match(year_str) {|m| (pre..post).include?(m[0].to_i) }
 	end
 

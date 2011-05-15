@@ -57,7 +57,7 @@ class PostsController < SideBarController
       if key.starts_with? 'photo'
         unless value.blank?
           p = Image.new
-          p.url = value
+          p.embed = value
           @post.images << p
         end
       end
@@ -92,7 +92,7 @@ class PostsController < SideBarController
       if key.starts_with? 'photo'
         unless value.blank?
           p = Image.new
-          p.url = value
+          p.embed = value
           @post.images << p
         end
       end
@@ -111,7 +111,7 @@ class PostsController < SideBarController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(posts_url)  }
+      format.html { redirect_to(posts_embed)  }
       format.js 
     end
     
@@ -142,7 +142,7 @@ private
   end
 
   def can_edit
-    redirect_to(@post) unless @post.user_id == current_user.id    
+    redirect_to(@post) unless @post.user_id == current_user.id
   end
 
 end
