@@ -7,6 +7,7 @@ class UsersController < LoggedInController
   end
 
   def show
+    @comments = Comment.find_by_user_id(@user.id);
   end
 
   def edit

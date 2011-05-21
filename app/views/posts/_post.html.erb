@@ -5,11 +5,15 @@
 		<%= simple_format auto_link post.body %>
 
 		<% post.videos.each do |video| %>
-			<%= raw video.embed %>
+			<div class="video">
+				<%= raw video.embed %>
+			</div>
 		<% end %>
 
 		<% post.images.each do |image| %>
-			<%= raw image.embed %>
+			<div class="image">
+				<%= raw image.embed %>
+			</div>
 		<% end %>
 	</div>
 	<div class="small">
@@ -23,7 +27,7 @@
 			Posted by: <%= link_to post.user.name, post.user %>
 		</p>
 		<p>
-			Tags: <%= raw tags_list(post.tags) %> 
+			Tags: <%= tags_list(post.tags) %> 
 		</p>
 	</div>
 </article>

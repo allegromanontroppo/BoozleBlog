@@ -7,7 +7,7 @@
     <h1>There's a new post on the Boozle Blog,</h1>
 	<h2><%= link_to @post.title, post_url(@post) %></h2>
     <p>
-      <%= truncate @post.body, :length => 100 %>
+      <%= simple_format truncate @post.body, :length => 150 %>
     </p>
   </body>
 </html>

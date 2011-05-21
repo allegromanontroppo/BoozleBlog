@@ -157,6 +157,8 @@ footer{height:50px}
 #main #comments{margin-top:16px}
 #main #comments .comment{margin-top:10px;border-bottom-style:dotted}
 #main #new_comment{margin-top:10px}
+#main div.image{margin-top:12px}
+#main .image img{border:solid #7CC5D6 4px;-moz-border-radius:5px;border-radius:5px;-moz-box-shadow:3px 3px 2px #ccc;box-shadow:3px 3px 2px #ccc}
 form{margin-bottom:20px}
  
 img.avatar{float:left;height:60px;margin-right:10px}
