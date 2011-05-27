@@ -35,36 +35,36 @@ class PostsController < SideBarController
 
   # POST /posts
   def create
-    @post = Post.new(params[:post])
-    @post.user_id = current_user.id
+    post = Post.new(params[:post])
+    post.user_id = current_user.id
 
-    @post.tags = []
+    post.tags = []
     params[:tags_list].split(',').select{|tag| !tag.blank?}.map do |tag|
               t = Tag.new
               t.tag = tag.strip
-              @post.tags << t
+              post.tags << t
            end  
 
-    @post.videos = []
+    post.videos = []
     unless params[:video].blank?
         v = Video.new
         v.embed = params[:video]
-        @post.videos << v
+        post.videos << v
     end
 
-    @post.images = []
+    post.images = []
     params.each do |key, value| 
       if key.starts_with? 'photo'
         unless value.blank?
           p = Image.new
           p.embed = value
-          @post.images << p
+          post.images << p
         end
       end
     end
 
-    if @post.save
-      redirect_to(@post, :notice => 'Post was successfully created.')
+    if post.save
+      redirect_to(post, :notice => 'Post was successfully created.')
     else
       render :action => "new"
     end
@@ -74,32 +74,32 @@ class PostsController < SideBarController
   # PUT /posts/1.xml
   def update
         
-    @post.tags =  params[:tags_list].split(',').select{|tag| !tag.blank?}.map do |tag|
+    post.tags =  params[:tags_list].split(',').select{|tag| !tag.blank?}.map do |tag|
           t = Tag.new
           t.tag = tag.strip
           t
        end  
 
-    @post.videos = []
+    post.videos = []
     unless params[:video].blank?
         v = Video.new
         v.embed = params[:video]
-        @post.videos << v
+        post.videos << v
     end
 
-    @post.images = []
+    post.images = []
     params.each do |key, value| 
       if key.starts_with? 'photo'
         unless value.blank?
           p = Image.new
           p.embed = value
-          @post.images << p
+          post.images << p
         end
       end
     end
        
-    if @post.update_attributes(params[:post])
-      redirect_to(@post, :notice => 'Post was successfully updated.') 
+    if post.update_attributes(params[:post])
+      redirect_to(post, :notice => 'Post was successfully updated.') 
     else
       render :action => "edit" 
     end
@@ -111,7 +111,7 @@ class PostsController < SideBarController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(posts_embed)  }
+      format.html { redirect_to(posts_path)  }
       format.js 
     end
     
