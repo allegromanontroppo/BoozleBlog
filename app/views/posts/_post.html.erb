@@ -18,7 +18,6 @@
 	</div>
 	<div class="small">
 		<p>
-			<%= link_to("View", post, :class => 'view') if show_view_link %>
 			<%= link_to('Edit', edit_post_path(post)) if current_user.is_super_user || post.user_id == current_user.id %>
 			<%= link_to('Delete', post, :method => :delete, :confirm => "Are you sure?") if current_user.is_super_user || post.user_id == current_user.id %>
 		</p>

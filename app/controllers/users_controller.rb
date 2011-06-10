@@ -1,20 +1,25 @@
 class UsersController < LoggedInController
 
-  before_filter :load_user, :only => [:show, :edit]
-
-  def index
-  	 @users = User.order('user_name')
-  end
+  before_filter :load_user, :only => [:show]
 
   def show
-    @comments = Comment.find_by_user_id(@user.id);
   end
-
-  def edit
+  
+  def my_account
+    @user = User.find(current_user)
   end
 
   def update
+    
+    user = User.find(current_user)    
+    if user.update_attributes(params[:user])
+      redirect_to posts_path, :notice => "Account settings saved"
+    else
+      render :action => "my_account"
+    end
+    
   end
+
 
 private 
 

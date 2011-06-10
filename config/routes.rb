@@ -1,10 +1,14 @@
 Rebeccaholland::Application.routes.draw do
 
   devise_for :users
+  get 'user/:id' => 'users#show', :as => :user
+  put 'my-account' => 'users#update', :as => :my_account
+  get 'my-account' => 'users#my_account', :as => :my_account
+  
+  
   resources :posts
-  get 'users/' => 'users#index', :as => :users
-  get 'users/:id' => 'users#show', :as => :user
   post 'posts/add_comment' => 'posts#add_comment', :as => :add_comment
+  
   get 'tags/' => 'tags#index', :as => :tags
   get 'tags/:id' => 'tags#show', :as => :tag
   get 'archives/:year/:month' => 'archives#index', :as => :archives

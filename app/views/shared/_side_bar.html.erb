@@ -1,12 +1,15 @@
 <nav>
-	<%= link_to 'My Account', user_path(current_user)%>
-	<br />
-	<%= link_to_if user_signed_in?, 'Log out', destroy_user_session_path %>
-	<br/>
-	<%= link_to('Create New Post', new_post_path) if current_user.can_post %>
+	<ul>
+		<li>
+			<%= link_to 'My Account', my_account_path %>
+		</li>
+		<li>
+			<%= link_to('Create New Post', new_post_path) if current_user.can_post %>
+		</li>
+	</ul>
 </nav>
 <nav class="space">
-<h4>Recent Comments</h4>
+<h4>Comments</h4>
 <ul>
 	<%= render :partial => 'shared/recent_comment_link', :collection => @recent_comments, :as => :recent_comment %>
 </ul>

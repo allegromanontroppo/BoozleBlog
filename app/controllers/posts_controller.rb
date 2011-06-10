@@ -1,9 +1,9 @@
-class PostsController < SideBarController
+class PostsController < SideBarController  
  
   before_filter :can_post, :only => [:new, :edit, :create, :update, :destroy]   
   before_filter :load_post!, :only => [:show, :edit, :update, :destroy]  
   before_filter :can_edit, :only => [:edit, :update, :destroy]
-
+  
   # GET /posts
   def index
 
@@ -54,7 +54,7 @@ class PostsController < SideBarController
 
     post.images = []
     params.each do |key, value| 
-      if key.starts_with? 'photo'
+      if key.starts_with? "photo"
         unless value.blank?
           p = Image.new
           p.embed = value
@@ -74,32 +74,32 @@ class PostsController < SideBarController
   # PUT /posts/1.xml
   def update
         
-    post.tags =  params[:tags_list].split(',').select{|tag| !tag.blank?}.map do |tag|
+    @post.tags =  params[:tags_list].split(',').select{|tag| !tag.blank?}.map do |tag|
           t = Tag.new
           t.tag = tag.strip
           t
        end  
 
-    post.videos = []
+    @post.videos = []
     unless params[:video].blank?
         v = Video.new
         v.embed = params[:video]
-        post.videos << v
+        @post.videos << v
     end
 
-    post.images = []
+    @post.images = []
     params.each do |key, value| 
-      if key.starts_with? 'photo'
+      if key.starts_with? "photo"
         unless value.blank?
           p = Image.new
           p.embed = value
-          post.images << p
+          @post.images << p
         end
       end
     end
        
-    if post.update_attributes(params[:post])
-      redirect_to(post, :notice => 'Post was successfully updated.') 
+    if @post.update_attributes(params[:@post])
+      redirect_to(@post, :notice => "#{@post.title} was successfully updated.") 
     else
       render :action => "edit" 
     end

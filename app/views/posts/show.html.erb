@@ -7,7 +7,7 @@
 	<%= link_to("#{@post.next_post.title} >>", @post.next_post) if @post.next_post %>
 </div>
 
-<%= render :partial => 'post', :object => @post, :locals => { :show_view_link => false } %>
+<%= render :partial => 'post', :object => @post %>
 <div id="comments">
 	<h3>Comments</h3>
 	<%= render :partial => 'comment', :collection => @post.comments %>
