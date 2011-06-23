@@ -1,4 +1,6 @@
 class Image < ActiveRecord::Base
 	belongs_to :post
-  #	validates_presence_of :tag 
+	attr_accessible :embed
+	
+	# validates_presence_of :embed 
 end

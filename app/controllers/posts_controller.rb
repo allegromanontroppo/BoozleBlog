@@ -14,16 +14,15 @@ class PostsController < SideBarController
 
   # GET /posts/1
   def show
+    
     @comments = Comment.includes(:user).find_by_post_id(@post.id)
-
-    @comment = Comment.new
-    @comment.post_id = @post.id
+    @comment = Comment.new :post_id => @post.id
+    
   end
 
   # GET /posts/new
   def new
-    @post = Post.new
-    @post.user_id = current_user.id
+    @post = Post.new :user_id => current_user.id
 
     @post.images = []
     10.times { |i| @post.images << Image.new }
@@ -35,71 +34,41 @@ class PostsController < SideBarController
 
   # POST /posts
   def create
-    post = Post.new(params[:post])
+    
+    post = Post.new params[:post] 
     post.user_id = current_user.id
 
-    post.tags = []
-    params[:tags_list].split(',').select{|tag| !tag.blank?}.map do |tag|
-              t = Tag.new
-              t.tag = tag.strip
-              post.tags << t
-           end  
+    post.tags = params[:tags_list].split(',').select{ |tag| !tag.blank? }.map do |tag|
+      Tag.new :tag => tag.strip
+    end  
+    
+    post.videos = posted_videos(params)
 
-    post.videos = []
-    unless params[:video].blank?
-        v = Video.new
-        v.embed = params[:video]
-        post.videos << v
-    end
-
-    post.images = []
-    params.each do |key, value| 
-      if key.starts_with? "photo"
-        unless value.blank?
-          p = Image.new
-          p.embed = value
-          post.images << p
-        end
-      end
-    end
+    post.images = posted_photos(params)
 
     if post.save
-      redirect_to(post, :notice => 'Post was successfully created.')
+      redirect_to post, :notice => 'Post was successfully created.'
     else
       render :action => "new"
     end
   end
 
+
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
         
-    @post.tags =  params[:tags_list].split(',').select{|tag| !tag.blank?}.map do |tag|
-          t = Tag.new
-          t.tag = tag.strip
-          t
-       end  
+    @post.tags = params[:tags_list].split(',').select{ |tag| !tag.blank? }.map do |tag|
+        Tag.new :tag => tag.strip 
+     end  
 
-    @post.videos = []
-    unless params[:video].blank?
-        v = Video.new
-        v.embed = params[:video]
-        @post.videos << v
-    end
+    @post.videos = posted_videos(params)
 
-    @post.images = []
-    params.each do |key, value| 
-      if key.starts_with? "photo"
-        unless value.blank?
-          p = Image.new
-          p.embed = value
-          @post.images << p
-        end
-      end
-    end
+    @post.images = posted_photos(params)
+    
        
-    if @post.update_attributes(params[:@post])
-      redirect_to(@post, :notice => "#{@post.title} was successfully updated.") 
+    if @post.update_attributes params[:@post] 
+      redirect_to @post, :notice => "#{@post.title} was successfully updated."
     else
       render :action => "edit" 
     end
@@ -119,7 +88,7 @@ class PostsController < SideBarController
 
   def add_comment
 
-    @comment = Comment.new(params[:comment])
+    @comment = Comment.new params[:comment]
     @comment.user_id = current_user.id
     if @comment.save
       respond_to do |format|
@@ -144,5 +113,47 @@ private
   def can_edit
     redirect_to(@post) unless @post.user_id == current_user.id
   end
+
+
+  def posted_videos(params)
+
+    videos = params.select{ |key, value| key.to_sym == :video && !value.blank? }
+
+    if videos.is_a? Hash
+
+      videos.values.map do |value|
+        Video.new :embed => value.strip
+      end
+
+    elsif videos.is_a? Array
+
+      videos.map do |value|
+        Video.new :embed => value[1].strip;
+      end
+
+    end       
+
+  end
+
+  def posted_photos(params)
+
+    photos = params.select{ |key, value| key.starts_with?("photo") && !value.blank? }
+
+    if photos.is_a? Hash
+
+      photos.values.map do |value|
+        Video.new :embed => value.strip
+      end
+
+    elsif photos.is_a? Array
+
+      photos.map do |value|
+        Video.new :embed => value[1].strip;
+      end
+
+    end       
+
+  end
+
 
 end

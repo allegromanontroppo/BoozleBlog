@@ -1,14 +1,16 @@
 class Tag < ActiveRecord::Base
-	belongs_to :post 
+  belongs_to :post 
 
-    validates_presence_of :tag 
+  attr_accessible :tag
 
-    before_save do
-    	tag.capitalize!
-  	end
+  validates_presence_of :tag 
 
-	def to_param
-     "#{self.tag}".parameterize
-  	end
+  before_save do
+  	tag.capitalize!
+  end
+
+  def to_param
+   "#{self.tag}".parameterize
+  end
 
 end

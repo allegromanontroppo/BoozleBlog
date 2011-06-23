@@ -3,7 +3,7 @@ class ArchivesController < SideBarController
 	before_filter :extract_current_month_from_url
   	
 	def index
-		@posts = Post.includes(:comments, :user, :tags).where(:created_at => (@current_month)..(@current_month + 1.month)).order('created_at DESC')
+		@posts = Post.includes(:comments, :user, :tags).where( :created_at => (@current_month)..(@current_month + 1.month) ).order('created_at DESC')
 		redirect_to(:action => 'index') if @posts.empty?
 	end
 
@@ -28,11 +28,11 @@ private
 	end
 
 	def is_valid_year?(year_str, pre = 1990, post = Time.new.year)
-		/^(\d)+$/.match(year_str) {|m| (pre..post).include?(m[0].to_i) }
+		/^(\d)+$/.match(year_str) { |m| (pre..post).include?(m[0].to_i) }
 	end
 
 	def is_valid_month?(month_str)
-		/^(\d)+$/.match(month_str) {|m| (1..12).include?(m[0].to_i) }
+		/^(\d)+$/.match(month_str) { |m| (1..12).include?(m[0].to_i) }
 	end 
 
 end
