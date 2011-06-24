@@ -1,7 +1,7 @@
 Rebeccaholland::Application.routes.draw do
 
   devise_for :users
-  get 'user/:id' => 'users#show', :as => :user
+  get 'users/:id' => 'users#show', :as => :user
   put 'my-account' => 'users#update', :as => :my_account
   get 'my-account' => 'users#my_account', :as => :my_account
   
