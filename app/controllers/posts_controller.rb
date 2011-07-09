@@ -64,10 +64,9 @@ class PostsController < SideBarController
 
     @post.videos = posted_videos(params)
 
-    @post.images = posted_photos(params)
-    
+    @post.images = posted_photos(params)    
        
-    if @post.update_attributes params[:@post] 
+    if @post.update_attributes params[:post] 
       redirect_to @post, :notice => "#{@post.title} was successfully updated."
     else
       render :action => "edit" 
@@ -114,7 +113,6 @@ private
     redirect_to(@post) unless @post.user_id == current_user.id
   end
 
-
   def posted_videos(params)
 
     videos = params.select{ |key, value| key.to_sym == :video && !value.blank? }
@@ -142,18 +140,17 @@ private
     if photos.is_a? Hash
 
       photos.values.map do |value|
-        Video.new :embed => value.strip
+        Image.new :embed => value.strip
       end
 
     elsif photos.is_a? Array
 
       photos.map do |value|
-        Video.new :embed => value[1].strip;
+        Image.new :embed => value[1].strip;
       end
 
     end       
 
   end
-
 
 end

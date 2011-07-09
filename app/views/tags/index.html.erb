@@ -3,7 +3,7 @@
 <% end %>
 <h2>All tags</h2>
 <ul>
-	<% @tags.each do |tag| %>
+	<% @tags_listing.each do |tag| %>
 	<li>
 		<%= link_to "#{tag.tag} (#{tag.count})", tag_path(tag) %>
 	</li>
