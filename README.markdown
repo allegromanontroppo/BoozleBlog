@@ -12,6 +12,13 @@ Incorporates tags and month by month archiving.
 
 Uses Rails.js for AJAX comment adding.
 
+Screenshots
+-----------
+
+![Homepage](http://www.markholland.me/content/images/portfolio/boozle-blog/1.png "Homepage")
+
+![Post creation page](http://www.markholland.me/content/images/portfolio/boozle-blog/3.png "Post creation page")
+
 Todos
 -----
 
