@@ -65,7 +65,7 @@ input:invalid, textarea:invalid {border-radius:1px;-moz-box-shadow:0px 0px 5px r
 
 ::-moz-selection {background:#026880;color:#fff;text-shadow:none}
 ::selection {background:#026880;color:#fff;text-shadow:none}
-a:link {-webkit-tap-highlight-color:#FF5E99}
+a:link {-webkit-tap-highlight-color:#026880}
 button { width:auto;overflow:visible}
 .ie7 img {-ms-interpolation-mode:bicubic}
 
@@ -102,17 +102,16 @@ h3 {font-size:1.3em}
 h4 {font-size:1.0em} 
 nav h4{display:inline-block;padding:3px 0px 0px 19px;background:#fff url(images/logo_sm.png) no-repeat 3px 3px}
 p {margin-bottom:0.5em}
-h1{text-shadow: #555 3px 3px 3px;-webkit-text-shadow: #555 3px 3px 3px;-moz-text-shadow: #555 3px 3px 3px;box-text: #555 3px 3px 3px;-webkit-box-shadow: #555 4px 8px 5px;-moz-box-shadow: #555 4px 8px 5px;box-shadow: #555 4px 8px 5px}
-h2{text-shadow: #555 2px 2px 2px;-webkit-text-shadow: #555 2px 2px 2px;-moz-text-shadow: #555 2px 2px 2px;box-text: #555 2px 2px 2px}
-h3{text-shadow: #555 1px 1px 1px;-webkit-text-shadow: #555 1px 1px 1px;-moz-text-shadow: #555 1px 1px 1px;box-text: #555 1px 1px 1px}
+h1{text-shadow: #555 2px 2px 2px;-webkit-text-shadow: #555 2px 2px 2px;-moz-text-shadow: #555 2px 2px 2px;box-text: #555 2px 2px 2px;-webkit-box-shadow: #555 4px 8px 5px;-moz-box-shadow: #555 4px 8px 5px;box-shadow: #555 4px 8px 5px}
+h2{text-shadow: #555 1px 1px 1px;-webkit-text-shadow: #555 1px 1px 1px;-moz-text-shadow: #555 1px 1px 1px;box-text: #555 1px 1px 1px}
+h3{box-text: #555 1px 1px 1px}
 
 input[type=text],input[type=url],textarea {width:90%}
 textarea {height:100px}
 input[type=submit] {-webkit-border-radius:10px;border-radius:10px;display:inline-block;padding:0 15px;cursor:pointer;border:1px solid #C97917;font-size:16px;line-height:30px;font-weight:200;text-shadow:0 -1px 0 #7E4B0D;color:#fff;text-align:center;background:#F7941E;background:-webkit-gradient(linear, 0 0, 0 70%, from(#F7941E), to(#D37F18));background:linear-gradient(#F7941E, #D37F18 70%);webkit-box-shadow:2px 2px 2px #b5b3b5;-moz-box-shadow:2px 2px 2px #b5b3b5;box-shadow:2px 2px 2px #b5b3b5}
 
 body {background-image:url(images/octonauts_pattern.jpg)}
-#outer_container {margin:0 auto;width:1000px;min-height:1000px;background:#7CC5D6 url(images/webback_sm.jpg) repeat-y}
-#inner_container {margin:0 50px}
+#container {margin:0 auto;padding:0 50px;width:900px;min-height:1000px;background:#7CC5D6 url(images/webback_sm.jpg) repeat-y}
 header {text-align:center}
 footer {height:50px}
 
