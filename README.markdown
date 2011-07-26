@@ -30,4 +30,4 @@ I would be more comfortable doing both of these in jQuery rather that Prototype 
 Links
 -----
 
-*The site [live](http:www.rebeccaholland.org)
+* The site [live](http:www.rebeccaholland.org)
