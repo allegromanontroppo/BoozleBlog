@@ -6,13 +6,11 @@ class SideBarController < LoggedInController
 
 	def load_archive_and_tags!
 
-	    @archives = Post.select("created_at").order("created_at DESC").group_by{|post| post.created_at.beginning_of_month}.map do |grouped_posts| 
-	                  { :month => grouped_posts[0], :posts_count => grouped_posts[1].count }
-	                end
+	    @archives = Post.archive
 
-	    @tags = Tag.select("tag, count(*) as count").order("count desc, tag").group("tag")
+	    @tags = Tag.list
 
-	    @recent_comments = Comment.order("created_at DESC").limit(5).includes(:user, :post)
+	    @recent_comments = Comment.recent
 
   end
 

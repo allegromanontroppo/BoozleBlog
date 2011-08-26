@@ -8,6 +8,12 @@ class Tag < ActiveRecord::Base
   before_save do
   	tag.capitalize!
   end
+  
+  def self.list 
+    
+    all :select => "tag, count(*) as count", :order => "tag", :group => "tag"
+  
+  end
 
   def to_param
    "#{self.tag}".parameterize

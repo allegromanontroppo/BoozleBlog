@@ -3,27 +3,27 @@ class ArchivesController < SideBarController
 	before_filter :extract_current_month_from_url
   	
 	def index
-		@posts = Post.includes(:comments, :user, :tags).where( :created_at => (@current_month)..(@current_month + 1.month) ).order('created_at DESC')
+		@posts = Post.find_by_month @current_month
 		redirect_to(:action => 'index') if @posts.empty?
 	end
 
 private
 
-    def extract_current_month_from_url
+  def extract_current_month_from_url
 
-	    if is_valid_year? params[:year]
-	      year = params[:year].to_i
-	    else
-	      redirect_to archives_url(:year => Time.new.year, :month => Time.new.month) and return
-	    end
+    if is_valid_year? params[:year]
+      year = params[:year].to_i
+    else
+      redirect_to archives_url(:year => Time.new.year, :month => Time.new.month) and return
+    end
 
-	    if is_valid_month? params[:month]
-	      month = params[:month].to_i
-	    else
-	      redirect_to archives_url(:year => year, :month => Time.new.month) and return
-	    end
+    if is_valid_month? params[:month]
+      month = params[:month].to_i
+    else
+      redirect_to archives_url(:year => year, :month => Time.new.month) and return
+    end
 
-	    @current_month = Time.local(year, month, 1)
+    @current_month = Time.local(year, month, 1)
 
 	end
 

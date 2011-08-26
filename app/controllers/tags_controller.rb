@@ -2,14 +2,14 @@ class TagsController < SideBarController
 
 	def index
 	  
-    	@tags_listing = Tag.select("tag, count(*) as count").order("tag").group("tag")
+    	@tags_listing = Tag.list
     	
 	end
 	
 	def show
 
 		@tag = params[:id].gsub(/-/, ' ')
-		@posts = Post.order("posts.created_at DESC").includes(:comments, :user, :tags).where("posts.id in (select post_id from tags where tag like ?)", @tag)
+		@posts = Post.find_by_tag @tag
 		
 		redirect_to(:action => 'index') if @posts.empty?
 		

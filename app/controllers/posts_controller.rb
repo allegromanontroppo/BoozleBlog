@@ -7,15 +7,14 @@ class PostsController < SideBarController
   # GET /posts
   def index
 
-    @posts = Post.order("posts.created_at DESC").limit(7).includes(:comments, :user, :tags, :videos, :images)   
-    @posts.pop if @posts.length.even?
+    @posts = Post.recent
 
   end
 
   # GET /posts/1
   def show
     
-    @comments = Comment.includes(:user).find_by_post_id(@post.id)
+    @comments = Comment.find_by_post @post
     @comment = Comment.new :post_id => @post.id
     
   end
@@ -48,9 +47,11 @@ class PostsController < SideBarController
 
     if post.save
       redirect_to post, :notice => 'Post was successfully created.'
-    else
+    else  
+      flash[:error] = @post.errors.full_messages.to_sentence unless @post.errors.empty?
       render :action => "new"
     end
+    
   end
 
 
@@ -68,9 +69,11 @@ class PostsController < SideBarController
        
     if @post.update_attributes params[:post] 
       redirect_to @post, :notice => "#{@post.title} was successfully updated."
-    else
+    else      
+      flash[:error] = @post.errors.full_messages.to_sentence unless @post.errors.empty?
       render :action => "edit" 
     end
+    
   end
 
   # DELETE /posts/1
