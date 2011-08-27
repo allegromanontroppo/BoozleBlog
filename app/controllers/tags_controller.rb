@@ -1,8 +1,7 @@
 class TagsController < SideBarController
 
 	def index
-	  
-    	@tags_listing = Tag.list
+	
     	
 	end
 	

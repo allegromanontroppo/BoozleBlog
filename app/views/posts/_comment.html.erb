@@ -1,9 +1,0 @@
-<div class="comment clearfix" id="comment-<%= comment.id %>">
-	<p class="small">On <time datetime="<%= comment.created_at %>"><%= comment.date_pretty %></time>, <%= link_to comment.user.name, comment.user %> said:</p>
-	<%= 
-		link_to(comment.user, :title => comment.user.name) do 
-	 		image_tag "/images/avatars/#{comment.user.avatar}", :class => "avatar"
-	 	end
-	%>
-	<%= simple_format auto_link comment.body %>
-</div>

@@ -13,17 +13,21 @@ class Post < ActiveRecord::Base
 	validates_associated :images
 	validates_associated :videos
 	
-	def self.recent(limit = 7, trim_to_odd = true)
+	def self.latest
 	  
-	  posts =  all :order => "created_at desc", :limit => limit, :include => [:comments, :user, :tags, :videos, :images]
-	  posts.pop if trim_to_odd && posts.length.even?
-    posts 
+	  first :order => "created_at desc", :include => [:comments, :user, :tags, :videos, :images] 
+	  
+	end
+	
+	def self.teasers(number_to_return = 6)
+	  
+	  all :order => "created_at desc", :offset => 1, :limit => number_to_return
 
 	end
 	
 	def self.find_by_tag(tag)
 	  
-	  all :conditions => ["posts.id in (select post_id from tags where tag like ?)", tag], :order => "created_at DESC",  :include => [:comments, :user, :tags]
+	  all :conditions => ["id in (select post_id from tags where tag like ?)", tag], :order => "created_at DESC",  :include => [:comments, :user, :tags]
 	
 	end
 	

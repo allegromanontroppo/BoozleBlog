@@ -7,7 +7,12 @@ class PostsController < SideBarController
   # GET /posts
   def index
 
-    @posts = Post.recent
+    @latest_post = Post.latest
+    teaser_posts = Post.teasers
+    @teaser_posts = []
+    until teaser_posts.length == 0
+      @teaser_posts << teaser_posts.slice!(0,2)
+    end 
 
   end
 

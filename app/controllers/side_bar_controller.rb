@@ -6,11 +6,11 @@ class SideBarController < LoggedInController
 
 	def load_archive_and_tags!
 
-	    @archives = Post.archive
+	  @archives = Post.archive
 
-	    @tags = Tag.list
+	  @tags_list = Tag.list
 
-	    @recent_comments = Comment.recent
+	  @recent_comments = Comment.recent
 
   end
 
