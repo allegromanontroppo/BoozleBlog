@@ -1,0 +1,19 @@
+%nav
+	%ul
+		%li= link_to 'My Account', my_account_path
+		%li= link_to('Create New Post', new_post_path) if current_user.can_post 
+			
+%nav.space
+	%h4 Comments
+	%ul
+		= render :partial => 'shared/recent_comment_link', :collection => @recent_comments, :as => :recent_comment 
+
+%nav.space
+	%h4 Archives
+	%ul
+		= render :partial => 'shared/archive_link', :collection => @archives, :as => :archive
+
+%nav.space
+	%h4 Tags
+	%ul
+		= render :partial => 'shared/tag_link', :collection => @tags_list, :as => :tag 

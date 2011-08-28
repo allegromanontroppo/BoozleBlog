@@ -1,0 +1,5 @@
+- content_for :title do 
+	| Posts tagged with #{@tag}
+
+%h2 #{pluralize(@posts.count, 'post')} tagged with #{@tag}
+= render :partial => 'synopsis', :collection => @posts, :as => :post

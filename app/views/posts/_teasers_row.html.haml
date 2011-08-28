@@ -1,0 +1,5 @@
+.teaser.clearfix
+	%div
+		= render :partial => 'teaser', :object => posts[0], :as => :post
+	.teaser_right
+		= render :partial => 'teaser', :object => posts[1], :as => :post

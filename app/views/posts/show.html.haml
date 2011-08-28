@@ -1,0 +1,21 @@
+- content_for :title do
+	| #{@post.title}
+
+#previous_next
+	= link_to("<< #{@post.previous_post.title}", @post.previous_post) if @post.previous_post
+	= link_to("#{@post.next_post.title} >>", @post.next_post) if @post.next_post
+	
+= render :partial => 'post', :object => @post
+
+#comments
+	%h3 Comments
+	= render :partial => 'comment', :collection => @post.comments
+	
+= form_for @comment, :url => add_comment_path(@comment), :remote => true do |f|
+	%p
+		= f.label :body, "Add your comment"
+		%br
+		= f.text_area :body
+	%p
+		= submit_tag "Post Comment"
+	= f.hidden_field :post_id

@@ -1,0 +1,8 @@
+- content_for :content do
+	.clearfix
+		.left
+			= yield
+		.right
+			= render :partial => 'shared/side_bar'
+		
+= render :file => 'layouts/application'

@@ -1,0 +1,26 @@
+!!!
+%html
+	%head
+		%meta{ :charset => 'utf-8' }
+		%meta{ 'http-equiv' => "X-UA-Compatible", :content => 'IE=edge,chrome=1' }
+		%title= "Boozle Blog %s" % yield(:title)
+		%meta{ :name=> "viewport", :content => "width=device-width, initial-scale=1.0" }
+		/[if lt IE 9]
+			%script{ :src => '//html5shim.googlecode.com/svn/trunk/html5.js' }
+			
+		= favicon_link_tag
+		= stylesheet_link_tag 'style'
+		= javascript_include_tag :defaults
+		= csrf_meta_tag
+
+	%body
+		#container
+			%header
+				%h1= link_to 'Boozle blog', :root 
+			#main.clearfix{ :role=> 'main' }
+				- flash.each do|key, value|
+					%div.flash{ :class => key }= value
+
+				= content_for?(:content) ? yield(:content) : yield
+     
+			%footer
