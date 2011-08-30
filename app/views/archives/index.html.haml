@@ -1,5 +1,5 @@
 - content_for :title do
-	| month_name(@current_month)
+	| #{month_name(@current_month)}
 	
 %h2<
 	#{pluralize(@posts.count, 'post')} from #{month_name(@current_month)}
