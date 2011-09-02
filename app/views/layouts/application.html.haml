@@ -4,7 +4,7 @@
 		%meta{ :charset => 'utf-8' }
 		%meta{ 'http-equiv' => "X-UA-Compatible", :content => 'IE=edge,chrome=1' }
 		%title= "Boozle Blog %s" % yield(:title)
-		%meta{ :name=> "viewport", :content => "width=device-width, initial-scale=1.0" }
+		%meta{ :name=> 'viewport', :content => 'width=device-width, initial-scale=1.0' }
 		/[if lt IE 9]
 			%script{ :src => '//html5shim.googlecode.com/svn/trunk/html5.js' }
 			
@@ -24,3 +24,8 @@
 				= content_for?(:content) ? yield(:content) : yield
      
 			%footer
+			
+		/[if lt IE7]
+			%script{ :src => '//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js' }
+			%script
+				window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})

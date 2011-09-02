@@ -1,20 +1,19 @@
 %article#post
 	%h2= link_to post.title, post
-	%h4<
+	%strong<
 		%time{ :datetime => post.created_at }
 			= post.date_pretty
 		
-	#body
-		= simple_format auto_link post.body
+	= simple_format auto_link post.body
 
-		- post.videos.each do |video|
-			.video
-				= raw video.embed
-				
-		- post.images.each do |image|
-			.image
-				= raw image.embed 
-				
+	- post.videos.each do |video|
+		.video
+			= raw video.embed
+			
+	- post.images.each do |image|
+		.image
+			= raw image.embed 
+			
 	.small
 		%p
 			= link_to('Edit', edit_post_path(post)) if current_user.is_super_user || post.user_id == current_user.id 

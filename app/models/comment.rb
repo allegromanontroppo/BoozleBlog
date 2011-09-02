@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
   
   end
   
-  def self.recent(limit = 8)
+  def self.recent(limit = 5)
     
     all :order => "created_at DESC", :limit => limit, :include => [:user, :post]
     
