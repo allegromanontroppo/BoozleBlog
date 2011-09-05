@@ -1,0 +1,5 @@
+(function($){
+	$('#<%= "post_#{@post.id}".to_s %>').slideUp(function(){
+		$(this).remove();
+	});
+}(jQuery));

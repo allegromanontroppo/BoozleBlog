@@ -1,0 +1,11 @@
+(function($){
+	
+	var newComment = '<%= escape_javascript(render :partial => "shared/comment", :object => @comment) %>',
+		$comments = $('#comments'),
+		$textarea = $('form textarea');
+		
+	$comments.append(newComment);
+	$('#comment_<%= @comment.id.to_s %>').highlight();
+	$textarea.val('');
+	
+}(jQuery));

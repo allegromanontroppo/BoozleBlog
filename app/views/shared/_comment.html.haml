@@ -1,0 +1,11 @@
+.comment.clearfix{ :id => ['comment', comment.id] }
+	%p.small
+		On
+		%time{ :datetime => comment.created_at }= comment.date_pretty
+		= link_to comment.user.name, comment.user	
+		said:
+	
+		= link_to(comment.user, :title => comment.user.name) do
+			= image_tag "avatars/#{comment.user.avatar}", :class => "avatar"
+	
+	= simple_format auto_link comment.body
