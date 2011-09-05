@@ -1,5 +1,7 @@
 Rebeccaholland::Application.routes.draw do
 
+  get "comments/new"
+
   devise_for :users
   get 'users/:id' => 'users#show', :as => :user
   put 'my-account' => 'users#update', :as => :my_account
@@ -7,7 +9,7 @@ Rebeccaholland::Application.routes.draw do
   
   
   resources :posts
-  post 'posts/add_comment' => 'posts#add_comment', :as => :add_comment
+  post 'comments/new' => 'comments#new', :as => :new_comment
   
   get 'tags/' => 'tags#index', :as => :tags
   get 'tags/:id' => 'tags#show', :as => :tag

@@ -10,7 +10,7 @@ class PostsController < SideBarController
     @latest_post = Post.latest
     teaser_posts = Post.teasers
     @teaser_posts = []
-    until teaser_posts.length == 0
+    until teaser_posts.length < 2
       @teaser_posts << teaser_posts.slice!(0,2)
     end 
 
@@ -91,19 +91,6 @@ class PostsController < SideBarController
       format.js 
     end
     
-  end
-
-  def add_comment
-
-    @comment = Comment.new params[:comment]
-    @comment.user_id = current_user.id
-    if @comment.save
-      respond_to do |format|
-        format.html { redirect_to post_path(@comment.post_id) }
-        format.js
-      end     
-    end 
-
   end
 
 private

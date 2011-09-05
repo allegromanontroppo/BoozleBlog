@@ -10,8 +10,6 @@ A Ruby on Rails blog engine with special emphasis on embedding You Tube videos a
 
 Incorporates tags and month by month archiving.
 
-Uses Rails.js for AJAX comment adding.
-
 Screenshots
 -----------
 
@@ -19,13 +17,16 @@ Screenshots
 
 ![Post creation page](http://www.markholland.me/content/images/portfolio/boozle-blog/3.png "Post creation page")
 
+Lately
+------
+
+Upgraded to Rails 3.1. Replaced RJS with jQuery equivalent code and incorporated asset pipeline.
+
 Todos
 -----
 
 - Have an autofill drop down for the post's tags entry.
 - Incorporate a light box for image viewing.
-
-I would be more comfortable doing both of these in jQuery rather that Prototype thus they've been deferred until Rails 3.1 comes out. (Yes, I know I could use the [jQuery-Rails](https://github.com/rails/jquery-ujs) gem already.) 
 
 Links
 -----

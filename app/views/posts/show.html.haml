@@ -9,9 +9,9 @@
 
 #comments
 	%h3 Comments
-	= render :partial => 'comment', :collection => @post.comments
+	= render :partial => 'shared/comment', :collection => @post.comments
 	
-= form_for @comment, :url => add_comment_path(@comment), :remote => true do |f|
+= form_for @comment, :url => new_comment_path, :remote => true do |f|
 	%p
 		= f.label :body, "Add your comment"
 		%br

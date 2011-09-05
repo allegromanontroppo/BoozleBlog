@@ -1,1 +1,0 @@
-page.visual_effect :squish, "post_#{@post.id}".to_s
