@@ -7,11 +7,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :notify_when_new_post
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :notify_when_new_post, :notify_when_new_comment
 
 
   def to_param
 		"#{self.id} #{self.name}".parameterize 
+  end
+
+  def email_with_name
+     "#{self.name} <#{self.email}>"
   end
 
 end

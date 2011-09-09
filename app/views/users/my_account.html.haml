@@ -4,9 +4,13 @@
 %h2 My Account
 
 %p= link_to "Log out", destroy_user_session_path
+
 = form_for @user, :url => my_account_path do |f|
 	%p
 		= f.check_box :notify_when_new_post 
 		= f.label :notify_when_new_post, "Send me an email when there is a new post"
+	%p
+		= f.check_box :notify_when_new_comment 
+		= f.label :notify_when_new_comment, "Send me an email when there is a new comment"
 	%p
 		= f.submit "Save changes"
