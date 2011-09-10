@@ -20,7 +20,7 @@ a:hover{color:#026880;text-decoration:underline}
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover{text-decoration:none}
 h1, h2, h3, h4{
 	font-weight:normal;
-	font-family:'OldStandardTTBold',Arial,sans-serif;
+	font-family:OldStandardTTBold,Arial,sans-serif;
 	letter-spacing:0;
 	text-transform:uppercase;
 	margin-top:0;
@@ -94,33 +94,84 @@ form {margin-bottom:20px}
 
 /* ==|== media queries ====================================================== */
 
-@media only screen and (min-width: 480px) {
-}
-
 @media only screen and (min-width: 768px) {
 	h1{font-size:3.5em;display:inline-block;padding:3px 5px 3px 62px;margin:40px auto;background:#fff image_url("logo.png") no-repeat 3px 3px;border:#026880 solid 8px}
-	h2{font-size:2.3em}
-	body{background-image:image_url("octonauts_pattern.jpg") }
-	#container{padding:0 50px;width:700px;min-height:1000px;background:#7CC5D6;border-left:#026880 solid 10px;border-right:#026880 solid 10px}
-	#main{padding:20px;border:#026880 solid 8px}
-	#main div.left {float:left;width:450px;padding-right:20px}
-	#main div.right {float:right;width:150px;margin-left:20px}
+	h2{
+		font-size:2.3em
+	}
+	body{
+		background-image:image_url("octonauts_pattern.jpg")
+	}
+	#container{
+		padding:0 50px;
+		width:700px;
+		min-height:1000px;
+		background:#7CC5D6;
+		border-left:#026880 solid 10px;
+		border-right:#026880 solid 10px
+	}
+	#main{
+		padding:15px 20px;
+		border-width:8px
+	}
+	#main div.left {
+		float:left;
+		width:450px;
+		padding-right:20px
+	}
+	#main div.right {
+		float:right;
+		width:150px;
+		margin-left:20px
+	}
 	
 	#main div#teasers div.teaser {margin-bottom:15px;padding-bottom:15px;border-bottom:#026880 dotted 1px}
 	#main div#teasers div.teaser div {float:left;width:48%;border:none}
 	#main div#teasers .teaser_right {margin-left:1%}
 	
-	#main #previous_next{text-align:center}
+	#main #previous_next{
+		text-align:center
+	}
 	#main #previous_next a{
-	white-space:nowrap;width:auto;margin-left:2px;color:#fff;text-decoration:none;text-transform:capitalize;-webkit-border-radius:10px;border-radius:10px;display:inline-block;padding:0 15px;cursor:pointer;border:1px solid #C97917;font-size:1em;line-height:24px;font-weight:200;text-shadow:0 -1px 0 #7E4B0D;text-align:center;background:#F7941E;background:-webkit-gradient(linear, 0 0, 0 70%, from(#F7941E), to(#D37F18));background:linear-gradient(#F7941E, #D37F18 70%);webkit-box-shadow:2px 2px 2px #b5b3b5;-moz-box-shadow:2px 2px 2px #b5b3b5;box-shadow:2px 2px 2px #b5b3b5}
+		white-space:nowrap;
+		width:auto;
+		margin-left:2px;
+		color:#fff;
+		text-decoration:none;
+		text-transform:capitalize;
+		-webkit-border-radius:10px;
+		border-radius:10px;
+		display:inline-block;
+		padding:0 15px;
+		cursor:pointer;
+		border:1px solid #C97917;
+		font-size:1em;
+		line-height:24px;
+		font-weight:200;
+		text-shadow:0 -1px 0 #7E4B0D;
+		text-align:center;
+		background:#F7941E;
+		background:-webkit-gradient(linear, 0 0, 0 70%, from(#F7941E), to(#D37F18));
+		background:linear-gradient(#F7941E, #D37F18 70%);
+		webkit-box-shadow:2px 2px 2px #b5b3b5;
+		-moz-box-shadow:2px 2px 2px #b5b3b5;
+		box-shadow:2px 2px 2px #b5b3b5
+	}
 	
-	#main #comments .comment img{width:60px;float:left}
-	.left {border-right:#026880 solid 1px}
+	#main #comments .comment img{
+		width:60px;
+		float:left
+	}
+	.left {
+		border-right:#026880 solid 1px
+	}
 }
 
-@media (min-width:1024px){
+@media only screen and (min-width: 1024px) {
 	#container{width:900px}
 	#main div.left {width:650px}
 	#main div.right {width:150px}
 }
+
+
 
