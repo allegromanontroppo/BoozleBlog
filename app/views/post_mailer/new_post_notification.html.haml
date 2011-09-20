@@ -1,0 +1,13 @@
+!!!
+%html
+	%head
+		%meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
+	%body
+		%p
+			Dear #{@user.name},
+		%p
+			There's a new post on the Boozle Blog
+		%h2
+			= link_to @post.title, post_url(@post)
+		%p
+			= simple_format truncate @post.body, :length => 150 

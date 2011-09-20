@@ -4,10 +4,8 @@
 		%strong
 			%time{ :datetime =>  post.created_at }
 				= post.date_pretty
-				
 	%article
 		= simple_format truncate post.body, :length => 150
-		
 	.small
 		%p
 			= link_to "View", post, :class => 'view'
