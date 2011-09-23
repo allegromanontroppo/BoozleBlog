@@ -38,16 +38,7 @@ Rebeccaholland::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => "" }
 
-  config.action_mailer.smtp_settings = {
-     :address => "",
-     :port => 25,
-     :domain => "",
-     :user_name => "",
-     :password => "",
-     :authentication => :login,
-     :enable_starttls_auto => true,
-     :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE
-  }
+  config.action_mailer.delivery_method = :sendmail
 
   # Enable threaded mode
   # config.threadsafe!
