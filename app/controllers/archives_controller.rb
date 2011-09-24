@@ -3,9 +3,16 @@ class ArchivesController < SideBarController
 	before_filter :extract_current_month_from_url
   	
 	def index
-		@posts = Post.find_by_month @current_month
-		redirect_to(:action => 'index') if @posts.empty?
-	end
+	  
+	  if params[:month].nil?	  
+  		@posts =Post.find_by_year(@current_month) 
+  		@title = @current_month.strftime("%Y")  		
+  	else  	  
+    	@posts = Post.find_by_month(@current_month)
+    	@title = @current_month.strftime("%M %Y")  	  
+  	end
+  	
+	end	
 
 private
 
@@ -17,13 +24,13 @@ private
       redirect_to archives_url(:year => Time.new.year, :month => Time.new.month) and return
     end
 
+
+month = 1
     if is_valid_month? params[:month]
       month = params[:month].to_i
-    else
-      redirect_to archives_url(:year => year, :month => Time.new.month) and return
     end
 
-    @current_month = Time.local(year, month, 1)
+    @current_month = Time.local(year, month || 1, 1)
 
 	end
 

@@ -13,7 +13,9 @@ Rebeccaholland::Application.routes.draw do
   
   get 'tags/' => 'tags#index', :as => :tags
   get 'tags/:id' => 'tags#show', :as => :tag
-  get 'archives/:year/:month' => 'archives#index', :as => :archives
+  
+  get 'archives/:year/:month' => 'archives#index', :as => :month_archives
+  get 'archives/:year' => 'archives#index', :as => :year_archives
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

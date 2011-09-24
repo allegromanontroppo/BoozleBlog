@@ -5,7 +5,7 @@ gem "rack", "~> 1.3.3"
 gem "rails", "~> 3.1.0"
 gem "haml", "~> 3.1.3"
 gem "rails_autolink", "~> 1.0.2"
-gem "devise", "~> 1.4.6"
+gem "devise", "~> 1.4.7"
 
 # Gems used only for assets and not required
 # in production environments by default.

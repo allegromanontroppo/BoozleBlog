@@ -6,7 +6,6 @@ config/database.yml
 config/environments/production.rb
 config/initializers/secret_token.rb
 
-Gemfile
 .sass-cache/
 public/assets/
 

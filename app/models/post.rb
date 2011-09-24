@@ -34,10 +34,26 @@ class Post < ActiveRecord::Base
 	def self.archive
 	  
 	  posts = all :select => "created_at", :order => "created_at DESC"
-	  
-	  posts.group_by{|post| post.created_at.beginning_of_month}.map do |grouped_posts| 
-        { :month => grouped_posts[0], :posts_count => grouped_posts[1].count }
+
+    archive = []
+
+	  year_count = posts.group_by{|post| post.created_at.beginning_of_year}.map do |years| 
+	    
+      months = posts.select{|p| p.created_at.beginning_of_year ==  years[0] }.group_by{|post| post.created_at.beginning_of_month}.map do |months| 
+        { :month => months[0], :count => months[1].count }
       end
+
+      archive << { :year => years[0], :count => years[1].count, :months => months }      
+      
+    end
+    
+    archive
+    
+	end
+	
+	def self.find_by_year(year)
+	  
+	  	  all :conditions => { :created_at => (year)..(year + 1.year) }, :order => "created_at DESC", :include => [:comments, :user, :tags]
 	  
 	end
 	

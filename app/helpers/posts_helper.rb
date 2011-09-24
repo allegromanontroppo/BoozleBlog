@@ -6,10 +6,4 @@ module PostsHelper
 
 	end
 
-	def archives_list(month, count)
-
-		link_to "#{month.strftime('%B %Y')} (#{count})", archives_path( :month => month.month, :year => month.year )
-
-	end
-
 end

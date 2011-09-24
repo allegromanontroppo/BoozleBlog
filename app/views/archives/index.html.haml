@@ -1,7 +1,7 @@
 - content_for :title do
-	| #{month_name(@current_month)}
+	| @title
 	
 %h2<
-	#{pluralize(@posts.count, 'post')} from #{month_name(@current_month)}
+	#{pluralize(@posts.count, 'post')} from #{@title}
 	
 = render :partial => 'synopsis', :collection => @posts, :as => :post
