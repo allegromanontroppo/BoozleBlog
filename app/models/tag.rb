@@ -20,3 +20,15 @@ class Tag < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: tags
+#
+#  id         :integer         not null, primary key
+#  post_id    :integer
+#  tag        :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

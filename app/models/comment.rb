@@ -20,6 +20,25 @@ class Comment < ActiveRecord::Base
 		
 		self[:created_at].strftime("%A #{self[:created_at].day.ordinalize} %B %Y")
 		
-	end
+	end  
+	
+  def allowed_to_delete?(current_user)
+  
+    (current_user.is_super_user || current_user.id == self[:user_id] ) unless current_user.nil?
+  
+  end
 	
 end
+
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :integer         not null, primary key
+#  post_id    :integer
+#  user_id    :integer
+#  body       :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+

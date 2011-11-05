@@ -9,7 +9,7 @@ class ArchivesController < SideBarController
   		@title = @current_month.strftime("%Y")  		
   	else  	  
     	@posts = Post.find_by_month(@current_month)
-    	@title = @current_month.strftime("%M %Y")  	  
+    	@title = @current_month.strftime("%B %Y")  	  
   	end
   	
 	end	

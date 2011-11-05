@@ -10,6 +10,7 @@ Rebeccaholland::Application.routes.draw do
   
   resources :posts
   post 'comments/new' => 'comments#new', :as => :new_comment
+  delete 'comment/:id' => 'comments#destroy', :as => :comment
   
   get 'tags/' => 'tags#index', :as => :tags
   get 'tags/:id' => 'tags#show', :as => :tag

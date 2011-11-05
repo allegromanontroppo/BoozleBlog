@@ -13,6 +13,9 @@ class Post < ActiveRecord::Base
 	validates_associated :images
 	validates_associated :videos
 	
+	accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |v| v[:embed].blank? }
+	accepts_nested_attributes_for :videos, :allow_destroy => true, :reject_if => lambda { |v| v[:embed].blank? }
+	
 	def self.latest
 	  
 	  first :order => "created_at desc", :include => [:comments, :user, :tags, :videos, :images] 
@@ -37,13 +40,13 @@ class Post < ActiveRecord::Base
 
     archive = []
 
-	  year_count = posts.group_by{|post| post.created_at.beginning_of_year}.map do |years| 
+	  year_count = posts.group_by{|post| post.created_at.beginning_of_year}.map do |year| 
 	    
-      months = posts.select{|p| p.created_at.beginning_of_year ==  years[0] }.group_by{|post| post.created_at.beginning_of_month}.map do |months| 
-        { :month => months[0], :count => months[1].count }
+      months = posts.select{|p| p.created_at.beginning_of_year ==  year[0] }.group_by{|post| post.created_at.beginning_of_month}.map do |month| 
+        { :month => month[0], :count => month[1].count }
       end
 
-      archive << { :year => years[0], :count => years[1].count, :months => months }      
+      archive << { :year => year[0], :count => year[1].count, :months => months }      
       
     end
     
@@ -53,13 +56,13 @@ class Post < ActiveRecord::Base
 	
 	def self.find_by_year(year)
 	  
-	  	  all :conditions => { :created_at => (year)..(year + 1.year) }, :order => "created_at DESC", :include => [:comments, :user, :tags]
+	  	  all :conditions => { :created_at => (year)..(year + 1.year) }, :order => "created_at", :include => [:comments, :user, :tags]
 	  
 	end
 	
 	def self.find_by_month(month)
 	  
-	  all :conditions => { :created_at => (month)..(month + 1.month) }, :order => "created_at DESC", :include => [:comments, :user, :tags]
+	  all :conditions => { :created_at => (month)..(month + 1.month) }, :order => "created_at", :include => [:comments, :user, :tags]
 	  
 	end
 
@@ -84,5 +87,24 @@ class Post < ActiveRecord::Base
 	  end
 	  @next_post
 	end
+		
+	def allowed_to_delete?(current_user)
+	  
+	  (current_user.is_super_user || current_user.id == self[:user_id] ) unless current_user.nil?
+	  
+	end
 	
 end
+
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  title      :string(255)
+#  body       :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+

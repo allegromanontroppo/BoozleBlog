@@ -7,7 +7,9 @@
 			Dear #{@user.name},
 		%p
 			There's a new comment on the Boozle Blog
-		%h2
+		%h3
 			= link_to @comment.post.title, post_url(@comment.post, :anchor => "comment_#{@comment.id}")
 		%p
 			= simple_format truncate @comment.body, :length => 150 
+		%p
+			Becky Boozle

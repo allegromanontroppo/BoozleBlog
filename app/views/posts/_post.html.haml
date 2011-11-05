@@ -17,7 +17,7 @@
 	.small
 		%p
 			= link_to('Edit', edit_post_path(post)) if current_user.is_super_user || post.user_id == current_user.id 
-			= link_to('Delete', post, :method => :delete, :confirm => "Are you sure?") if current_user.is_super_user || post.user_id == current_user.id
+			= link_to('Delete', post, :method => :delete, :confirm => "Are you sure?") if post.allowed_to_delete?(current_user)
 		%p
 			Comments: #{link_to post.comments.count, post_path(post, :anchor => 'comments')} | Posted by: #{link_to post.user.name, post.user}
 		%p

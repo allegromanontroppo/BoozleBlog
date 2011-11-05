@@ -28,8 +28,8 @@ class PostsController < SideBarController
   def new
     @post = Post.new :user_id => current_user.id
 
-    @post.images = []
-    10.times { |i| @post.images << Image.new }
+    1.times { |i| @post.videos.build }
+    3.times { |i| @post.images.build }
   end
 
   # GET /posts/1/edit
@@ -45,11 +45,7 @@ class PostsController < SideBarController
     post.tags = params[:tags_list].split(',').select{ |tag| !tag.blank? }.map do |tag|
       Tag.new :tag => tag.strip
     end  
-    
-    post.videos = posted_videos(params)
-
-    post.images = posted_photos(params)
-
+  
     if post.save
       redirect_to post, :notice => 'Post was successfully created.'
     else  
@@ -59,7 +55,6 @@ class PostsController < SideBarController
     
   end
 
-
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
@@ -67,11 +62,7 @@ class PostsController < SideBarController
     @post.tags = params[:tags_list].split(',').select{ |tag| !tag.blank? }.map do |tag|
         Tag.new :tag => tag.strip 
      end  
-
-    @post.videos = posted_videos(params)
-
-    @post.images = posted_photos(params)    
-       
+   
     if @post.update_attributes params[:post] 
       redirect_to @post, :notice => "#{@post.title} was successfully updated."
     else      
@@ -106,46 +97,6 @@ private
 
   def can_edit
     redirect_to(@post) unless @post.user_id == current_user.id
-  end
-
-  def posted_videos(params)
-
-    videos = params.select{ |key, value| key.to_sym == :video && !value.blank? }
-
-    if videos.is_a? Hash
-
-      videos.values.map do |value|
-        Video.new :embed => value.strip
-      end
-
-    elsif videos.is_a? Array
-
-      videos.map do |value|
-        Video.new :embed => value[1].strip;
-      end
-
-    end       
-
-  end
-
-  def posted_photos(params)
-
-    photos = params.select{ |key, value| key.starts_with?("photo") && !value.blank? }
-
-    if photos.is_a? Hash
-
-      photos.values.map do |value|
-        Image.new :embed => value.strip
-      end
-
-    elsif photos.is_a? Array
-
-      photos.map do |value|
-        Image.new :embed => value[1].strip;
-      end
-
-    end       
-
   end
 
 end

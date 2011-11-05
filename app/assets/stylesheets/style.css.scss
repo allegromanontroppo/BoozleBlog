@@ -69,9 +69,8 @@ footer {height:50px}
 #main #previous_next a{}
 #main #comments {margin-top:16px}
 #main #comments .comment {margin-top:10px;border-bottom-style:dotted}
-#main #comments .comment img{width:50px;float:left}
-#main #comments .comment p{padding-left:60px}
-#main #comments .comment p.small{padding:0}
+#main #comments .comment div{float:left;margin-right:10px}
+#main #comments .comment img{width:50px;margin-bottom:10px}
 #main #new_comment {margin-top:10px}
 #main div.image {margin-top:12px}
 #main div.image img {border:solid #7CC5D6 4px;-moz-border-radius:5px;border-radius:5px;webkit-box-shadow:2px 2px 2px #b5b3b5;-moz-box-shadow:2px 2px 2px #b5b3b5;box-shadow:2px 2px 2px #b5b3b5}
@@ -80,7 +79,7 @@ form {margin-bottom:20px}
 .flash {color:#026880;font:1.2em/1em 'OldStandardTTBold', Arial, sans-serif;letter-spacing:0;text-transform:uppercase;margin-bottom:1em;background:#fff;border:#026880 solid 2px;-moz-border-radius:8px;border-radius:8px;padding:3px 5px}
 #error_explanation {color:red}
 .thats_you {font-size:0.7em}
-.small {font-size:0.8em;margin-top:10px}
+.small {font-size:smaller;margin-top:10px}
 /* ==|== non-semantic helper classes ======================================== */
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .ir br { display: none; }

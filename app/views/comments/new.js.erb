@@ -5,7 +5,7 @@
 		$textarea = $('form textarea');
 		
 	$comments.append(newComment);
-	$('#comment_<%= @comment.id.to_s %>').highlight();
+	$(newComment).highlight();
 	$textarea.val('');
 	
 }(jQuery));

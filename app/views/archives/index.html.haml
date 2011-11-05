@@ -1,5 +1,5 @@
 - content_for :title do
-	| @title
+	| #{@title}
 	
 %h2<
 	#{pluralize(@posts.count, 'post')} from #{@title}
