@@ -88,7 +88,7 @@ class Post < ActiveRecord::Base
 	  @next_post
 	end
 		
-	def allowed_to_delete?(current_user)
+	def allowed_to_edit_or_delete?(current_user)
 	  
 	  (current_user.is_super_user || current_user.id == self[:user_id] ) unless current_user.nil?
 	  

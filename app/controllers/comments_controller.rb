@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   
+  
   def new
     
     @comment = Comment.new params[:comment]
@@ -22,6 +23,8 @@ class CommentsController < ApplicationController
   
   def destroy
     
+    begin
+    
     @comment = Comment.find params[:id]
     if @comment.delete
         respond_to do |format|
@@ -34,6 +37,10 @@ class CommentsController < ApplicationController
         render :nothing => true
         
       end
+      
+    rescue
+      
+    end
     
   end
 

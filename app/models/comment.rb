@@ -1,4 +1,9 @@
+require 'rdiscount'
+
 class Comment < ActiveRecord::Base
+  
+  before_create :convert_from_markdown_to_html
+
 	belongs_to :post
 	belongs_to :user
 
@@ -27,7 +32,13 @@ class Comment < ActiveRecord::Base
     (current_user.is_super_user || current_user.id == self[:user_id] ) unless current_user.nil?
   
   end
-	
+  
+  private
+  
+    def convert_from_markdown_to_html      
+      self.body = RDiscount.new(self.body).to_html
+    end
+  	
 end
 
 # == Schema Information

@@ -16,7 +16,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '1.0.14'
-
+gem "rdiscount", "~> 1.6.8"
 # Use unicorn as the web server
 # gem 'unicorn'
 
