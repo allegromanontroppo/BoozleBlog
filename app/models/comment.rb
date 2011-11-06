@@ -36,7 +36,7 @@ class Comment < ActiveRecord::Base
   private
   
     def convert_from_markdown_to_html      
-      self.body = RDiscount.new(self.body).to_html
+      self.body = RDiscount.new(self.body, :filter_html).to_html
     end
   	
 end
