@@ -42,7 +42,7 @@ class Post < ActiveRecord::Base
 
 	  year_count = posts.group_by{|post| post.created_at.beginning_of_year}.map do |year| 
 	    
-      months = posts.select{|p| p.created_at.beginning_of_year ==  year[0] }.group_by{|post| post.created_at.beginning_of_month}.map do |month| 
+      months = posts.select{|p| p.created_at.beginning_of_year ==  year[0] }.group_by{|p| p.created_at.beginning_of_month}.map do |month| 
         { :month => month[0], :count => month[1].count }
       end
 

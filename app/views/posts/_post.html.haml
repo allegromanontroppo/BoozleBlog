@@ -19,8 +19,7 @@
 			%p
 				= link_to('Edit', edit_post_path(post))
 				= link_to('Delete', post, :method => :delete, :confirm => "Are you sure?") 
-		%p
-			Comments: #{link_to post.comments.count, post_path(post, :anchor => 'comments')} | Posted by: #{link_to post.user.name, post.user}
+		%p Comments: #{link_to post.comments.count, post_path(post, :anchor => 'comments')} | Posted by: #{link_to post.user.name, post.user}
 		%p
 			Tags: 
 			= tags_list(post.tags)

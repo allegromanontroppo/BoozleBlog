@@ -14,8 +14,7 @@
 = form_for @comment, :url => new_comment_path, :remote => true do |f|
 	%p
 		= f.label :body, 'Add your comment'
-		%span{ :class => :small }<
-			(Textbox accepts #{link_to('Markdown', 'http://daringfireball.net/projects/markdown/', :target => :blank)})
+		%span.small	(Textbox accepts #{link_to('Markdown', 'http://daringfireball.net/projects/markdown/basics', :target => :blank)})
 		%br
 		= f.text_area :body
 	%p
