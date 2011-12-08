@@ -1,0 +1,9 @@
+(function($){
+	
+	var $deletedComment = $('#comment_<%= @comment.id.to_s %>');
+	
+	$deletedComment.slideUp(function() {
+		$deletedComment.remove();
+	});
+	
+}(jQuery));
