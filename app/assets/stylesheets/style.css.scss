@@ -113,8 +113,8 @@ button {
   width: auto;
   overflow: visible; }
 
-input [type=text], input[type=url] {
-    width: 90%; }
+input[type="text"], input[type="url"] {
+	width: 90%; }
 
 textarea {
   width: 90%;
@@ -195,7 +195,6 @@ footer {
     &.space {
       margin-top: 20px; } }
   article#post, #comments .comment {
-    border-bottom: #026880 solid 1px;
     padding-bottom: 14px; }
   div.synopsis {
     border-bottom: #026880 dotted 1px;
@@ -208,7 +207,8 @@ footer {
     margin-top: 16px;
     .comment {
       margin-top: 10px;
-      border-bottom-style: dotted;      
+      border-bottom-style: dotted;   
+		  border-bottom: #026880 solid 1px;   
 			.avatar{		
 					a{
 						display:block;

@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
   
+  def create
   
-  def new
+    @post.find params[:post_id]
     
-    @comment = Comment.new params[:comment]
-    
+    @comment = @post.comments.build params[:comment]
     @comment.user_id = current_user.id
     if @comment.save
       
@@ -14,16 +14,12 @@ class CommentsController < ApplicationController
       end     
       
     else
-      
-      render :nothing => true
-        
+      render :nothing => true        
     end 
     
   end
   
   def destroy
-    
-    begin
     
     @comment = Comment.find params[:id]
     if @comment.delete
@@ -39,8 +35,6 @@ class CommentsController < ApplicationController
       end
       
     rescue
-      
-    end
     
   end
 

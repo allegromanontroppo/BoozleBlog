@@ -2,6 +2,6 @@ Dear <%= @user.name %>,
 
 There's a new comment on the Boozle Blog, <%= @comment.post.title %>
 
-<%= post_url(@comment.post, :anchor => "comment_#{@comment.id}") %>
+<%= post_url @comment.post, :anchor => "comment_#{@comment.id}" %>
 
 Becky Boozle

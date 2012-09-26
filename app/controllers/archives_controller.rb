@@ -24,8 +24,6 @@ private
       redirect_to archives_url(:year => Time.new.year, :month => Time.new.month) and return
     end
 
-
-month = 1
     if is_valid_month? params[:month]
       month = params[:month].to_i
     end

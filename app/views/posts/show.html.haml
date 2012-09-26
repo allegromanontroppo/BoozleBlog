@@ -1,22 +1,22 @@
-- content_for :title do
+= content_for :title do
 	| #{@post.title}
 
-#previous_next
-	= link_to("<< #{@post.previous_post.title}", @post.previous_post) if @post.previous_post
-	= link_to("#{@post.next_post.title} >>", @post.next_post) if @post.next_post
-	
 = render :partial => 'post', :object => @post
+
+#previous_next
+	= link_to("<< #{ truncate @post.previous_post.title, :length => 40 }", @post.previous_post) if @post.previous_post
+	= link_to("#{ truncate @post.next_post.title, :length => 40 } >>", @post.next_post) if @post.next_post
 
 #comments
 	%h3 Comments
 	= render :partial => 'shared/comment', :collection => @post.comments
 	
-= form_for @comment, :url => new_comment_path, :remote => true do |f|
+= form_for @comment, :url => create_comment_path, :remote => true do |f|
 	%p
 		= f.label :body, 'Add your comment'
-		%span.small	(Textbox accepts #{link_to('Markdown', 'http://daringfireball.net/projects/markdown/basics', :target => :blank)})
+		%span.small	(Textbox accepts #{link_to('Markdown', 'http://daringfireball.net/projects/markdown/basics', :target => '_blank')})
 		%br
-		= f.text_area :body
+		~ f.text_area :body
 	%p
 		= submit_tag "Post Comment"
 	= f.hidden_field :post_id

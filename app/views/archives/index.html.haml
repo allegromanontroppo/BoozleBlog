@@ -4,4 +4,4 @@
 %h2<
 	#{pluralize(@posts.count, 'post')} from #{@title}
 	
-= render :partial => 'synopsis', :collection => @posts, :as => :post
+= render :partial => 'posts/post', :collection => @posts, :as => :post

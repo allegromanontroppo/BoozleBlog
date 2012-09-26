@@ -7,7 +7,6 @@ class Post < ActiveRecord::Base
 	has_many :videos, :dependent => :delete_all 
 
 	validates_presence_of :title
-	validates_presence_of :body
 	validates_associated :comments
 #	validates_associated :tag
 	validates_associated :images

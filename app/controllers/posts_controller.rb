@@ -3,10 +3,10 @@ class PostsController < SideBarController
   before_filter :can_post, :only => [:new, :edit, :create, :update, :destroy]   
   before_filter :load_post!, :only => [:show, :edit, :update, :destroy]  
   before_filter :can_edit, :only => [:edit, :update, :destroy]
-  
+
   # GET /posts
   def index
-
+    
     @latest_post = Post.latest
     teaser_posts = Post.teasers
     @teaser_posts = []
@@ -39,15 +39,15 @@ class PostsController < SideBarController
   # POST /posts
   def create
     
-    post = Post.new params[:post] 
-    post.user_id = current_user.id
+    @post = Post.new params[:post] 
+    @post.user_id = current_user.id
 
-    post.tags = params[:tags_list].split(',').select{ |tag| !tag.blank? }.map do |tag|
+    @post.tags = params[:tags_list].split(',').select{ |tag| !tag.blank? }.map do |tag|
       Tag.new :tag => tag.strip
     end  
   
-    if post.save
-      redirect_to post, :notice => 'Post was successfully created.'
+    if @post.save
+      redirect_to @post, :notice => 'Post was successfully created.'
     else  
       flash[:error] = @post.errors.full_messages.to_sentence unless @post.errors.empty?
       render :action => "new"
