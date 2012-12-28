@@ -23,6 +23,10 @@ a, a:hover{
   }
 }
 
+.muted{
+  font-size: 0.9em;
+}
+
 h1 {
   
   @include bordered-zone;
@@ -45,9 +49,9 @@ h1 {
 }
 
 h2 {
-  font-size: 2.3em;
+  font-size: 2.1em;
   
-  @media(min-width: $phone){
+  @media(min-width: $tablet){
     font-size: 2.8em;
   }
 }

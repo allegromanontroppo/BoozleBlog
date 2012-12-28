@@ -9,6 +9,5 @@
 
 //= require comments
 //= require alert_close
-//= require flash
 //= require showcase
 

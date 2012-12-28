@@ -11,9 +11,9 @@ $ ->
     $showcase.awShowcase(
       content_width:			  $showcase.width() #- 90
       fit_to_parent:			  false
-      auto:					        true
+      auto:					        false
       interval:				      3000
-      continuous:				    false
+      continuous:				    true
       loading:				      true
       tooltip_width:			  200
       tooltip_icon_width:	  32
