@@ -1,26 +1,27 @@
-%article#post
-	%h2= link_to post.title, post
-	%strong<
-		%time{ :datetime => post.created_at }
-			= post.date_pretty
-		
-	= simple_format auto_link post.body
+%section.post
 
-	- post.videos.each do |video|
-		.video
-			= raw video.embed
-			
-	- post.images.each do |image|
-		.image
-			= raw image.embed 
-			
-	.small
-		- if post.allowed_to_edit_or_delete?(current_user)
-			%p
-				= link_to('Edit', edit_post_path(post))
-				= link_to('Delete', post, :method => :delete, :confirm => "Are you sure?") 
-		%p Comments: #{link_to post.comments.count, post_path(post, :anchor => 'comments')} | Posted by: #{link_to post.user.name, post.user}
-		%p
-			Tags: 
-			= tags_list(post.tags)
-			
+  %a{ :href => post_path(post) }
+    %h2= post.title
+
+  :markdown
+    #{ post.body }
+
+  .videos
+    - post.videos.map(&:embed).each do |video|
+      = video.html_safe
+  
+  .photos
+    - if post.photos.size > 1
+      .showcase
+        - post.photos.map(&:embed).each do |photo|
+          .showcase-slide
+            .showcase-content
+              = photo.html_safe
+            .showcase-thumbnail
+              = photo.html_safe
+              .showcase-thumbnail-cover
+    - else
+      - post.photos.map(&:embed).each do |photo|
+        = photo.html_safe
+    
+

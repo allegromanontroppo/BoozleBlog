@@ -1,0 +1,9 @@
+.media{ :id => ['comment', comment.id] }
+  %a.pull-left{ :href => user_path(comment.user) }= image_tag "avatars/#{ comment.user.avatar }", :alt => comment.user.name, :class => 'avatar'
+  .media-body
+    %h5
+      On #{ comment.date_pretty }, #{ link_to comment.user.name, user_path(comment.user) } said:
+    
+    = simple_format comment.body
+
+    %p= link_to('Delete', remove_comment_post_path(@post, comment), :method => :delete, :confirm => "Are you sure?", :remote => true) if comment.allowed_to_delete?(current_user)

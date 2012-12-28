@@ -1,22 +1,33 @@
-= content_for :title do
-	| #{@post.title}
+- @title = @post.title
 
-= render :partial => 'post', :object => @post
+= render :partial => @post
 
-#previous_next
-	= link_to("<< #{ truncate @post.previous_post.title, :length => 40 }", @post.previous_post) if @post.previous_post
-	= link_to("#{ truncate @post.next_post.title, :length => 40 } >>", @post.next_post) if @post.next_post
+- if @post.tags.any?
+  %p
+    Tags:
+    = @post.tags.map{ |t| link_to t.tag, tag_path(t) }.join(', ').html_safe
+  
+%p= link_to "Posted #{ @post.date_pretty }", @post
+
+- if @post.allowed_to_edit_or_delete?(current_user)
+  %p
+    = link_to 'Edit', edit_post_path(@post)
+    |
+    = link_to 'Delete', post_path(@post), :method => :delete, :confirm => 'Are you sure?'
+
+%hr
 
 #comments
-	%h3 Comments
-	= render :partial => 'shared/comment', :collection => @post.comments
-	
-= form_for @comment, :url => create_comment_path, :remote => true do |f|
-	%p
-		= f.label :body, 'Add your comment'
-		%span.small	(Textbox accepts #{link_to('Markdown', 'http://daringfireball.net/projects/markdown/basics', :target => '_blank')})
-		%br
-		~ f.text_area :body
-	%p
-		= submit_tag "Post Comment"
-	= f.hidden_field :post_id
+  %h3= pluralize @post.comments.size, 'comment'
+  = render :partial => 'comment', :collection => @post.comments, :spacer_template => 'shared/spacer'
+
+  %hr
+
+  = form_for @comment, :url => add_comment_post_path(@post), :remote => true do |f|
+    %fieldset
+      .control-group
+        = f.label :body, 'Add your comment'
+        .controls~ f.text_area :body, :rows => 10, :class => 'span12'
+      .control-group.clearfix
+        .controls= submit_tag "Post Comment", :class => 'btn btn-primary btn-large pull-right'
+

@@ -1,19 +1,17 @@
-%nav
-	%ul
-		%li= link_to 'My Account', my_account_path
-		%li= link_to('Create New Post', new_post_path) if current_user.can_post 
-			
-%nav.space
-	%h4 Comments
-	%ul
-		= render :partial => 'shared/recent_comment_link', :collection => @recent_comments, :as => :recent_comment 
+.well
+  %nav
+    %ul.unstyled
+      %li= link_to 'My Account', my_account_path
+      %li= link_to('Create New Post', new_post_path) if current_user.can_post 
 
-%nav.space
-	%h4 Archives
-	%ul
-		= render :partial => 'shared/archive_year_link', :collection => @archives, :as => :year
+  %nav
+    %h4 Comments
+    %ul.unstyled= render :partial => 'shared/recent_comment_link', :collection => Comment.recent, :as => :comment 
 
-%nav.space
-	%h4 Tags
-	%ul
-		= render :partial => 'shared/tag_link', :collection => @tags_list, :as => :tag 
+  %nav
+    %h4 Archives
+    %ul.unstyled= render :partial => 'shared/archive_year_link', :collection => Post.archives, :as => :year
+
+  %nav
+    %h4 Tags
+    %ul.unstyled= render :partial => 'shared/tag_link', :collection => @tags || Tag.list, :as => :tag 

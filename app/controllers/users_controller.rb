@@ -1,6 +1,6 @@
 class UsersController < LoggedInController
 
-  before_filter :load_user, :only => [:show]
+  before_filter :load_user, :only => :show
 
   def show
   end

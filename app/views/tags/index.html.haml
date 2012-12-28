@@ -1,7 +1,5 @@
-- content_for :title do
-	| All tags
+- @title = 'All tags'
 
 %h2 All tags
-%ul
-	- @tags_list.each do |tag|
-		%li= link_to "#{tag.tag} (#{tag.count})", tag_path(tag)
+- @tags.each do |tag|
+  %p= link_to "#{tag.tag} (#{tag.count})", tag_path(tag)

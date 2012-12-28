@@ -1,8 +1,6 @@
 - content_for :content do
-	.clearfix
-		.left
-			= yield
-		.right
-			= render :partial => 'shared/side_bar'
-		
-= render :file => 'layouts/application'
+  .row-fluid
+    .span9= yield
+    .span3= render :partial => 'shared/side_bar'
+
+= render :template => 'layouts/application'

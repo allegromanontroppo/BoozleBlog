@@ -1,9 +1,9 @@
-= content_for :title do
-	| #{@user.name} 
-  
-%h2
-	= @user.name	
-	- if @user.id == current_user.id
-		%span.thats_you (That's you!)
-		
-%p= image_tag "avatars/#{@user.avatar}"
+- @title = @user.name
+
+.media
+  = image_tag "avatars/#{ @user.avatar }", :alt => @user.name, :class => 'pull-left avatar'
+  .media-body
+    %h2
+      = @user.name	
+      - if @user.id == current_user.id
+        %span (That's you!)

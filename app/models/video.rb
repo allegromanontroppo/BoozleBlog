@@ -2,7 +2,7 @@ class Video < ActiveRecord::Base
 	belongs_to :post
 	attr_accessible :embed
 	
- # validates_presence_of :embed 
+	validates :embed, :presence => true
 end
 
 # == Schema Information

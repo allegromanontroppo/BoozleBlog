@@ -1,8 +1,7 @@
-- content_for :title do
-	| Editing "#{@post.title}"
+- @title= "Editing #{ @post.title }"
 
 %h2 Editing "#{@post.title}"
 
 = render 'form'
-%p
-	#{link_to 'Show', @post} | #{link_to 'All posts', posts_path}
+
+%p #{link_to 'Show', @post} | #{link_to 'All posts', posts_path}

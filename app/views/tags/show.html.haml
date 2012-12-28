@@ -1,5 +1,6 @@
-- content_for :title do 
-	| Posts tagged with #{@tag}
+- @title = "Posts tagged with #{@tag}"
 
-%h2 #{pluralize(@posts.count, 'post')} tagged with #{@tag}
-= render :partial => 'posts/post', :collection => @posts, :as => :post
+.well
+  %h2 #{ pluralize(@posts.count, 'post') } tagged with #{@tag}
+
+= render :partial => 'posts/post', :collection => @posts, :spacer_template => 'shared/spacer'

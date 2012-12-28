@@ -1,7 +1,4 @@
-- content_for :title do
-	| #{@title}
+.well
+  %h2 #{pluralize(@posts.count, 'post')} from #{@title}
 	
-%h2<
-	#{pluralize(@posts.count, 'post')} from #{@title}
-	
-= render :partial => 'posts/post', :collection => @posts, :as => :post
+= render :partial => 'posts/post', :collection => @posts, :spacer_template => 'shared/spacer'

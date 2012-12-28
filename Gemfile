@@ -1,21 +1,23 @@
 source 'http://rubygems.org'
 
-gem "rails", "~> 3.1.3"
-gem "rake", "~> 0.9.2.2"
-gem "rack", "~> 1.3.5"
-gem "haml", "~> 3.1.4"
+gem "rails"
+gem "rake"
+gem "rack"
+gem "haml"
 gem "rails_autolink", "~> 1.0.2"
-gem "devise", "~> 1.4.9"
+gem "devise"
+
+gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.nil
 group :assets do
-  gem "sass-rails", "~> 3.1.5"
- # gem 'coffee-rails', "~> 3.1.0"
+  gem "sass-rails"
+  gem 'compass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 
-gem 'jquery-rails', '1.0.14'
 gem "rdiscount", "~> 1.6.8"
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -28,7 +30,7 @@ gem "rdiscount", "~> 1.6.8"
 
 group :production do
   gem 'execjs'
-  gem 'therubyracer'
+  #gem 'therubyracer'
 end
 
 group :test do

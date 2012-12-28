@@ -1,21 +1,23 @@
 Rebeccaholland::Application.routes.draw do
-
-  devise_for :users
-  get 'users/:id' => 'users#show', :as => :user
-  put 'my-account' => 'users#update', :as => :my_account
-  get 'my-account' => 'users#my_account', :as => :my_account
   
-  
-  resources :posts
-  get 'comments/new'
-  post 'comments/create' => 'comments#create', :as => :create_comment
-  delete 'comment/:id' => 'comments#destroy', :as => :comment
+  resources :posts do
+    member do
+      post 'add_comment'
+      delete 'remove_comment/:comment_id' => 'posts#remove_comment', :as => 'remove_comment'
+    end
+  end
   
   get 'tags/' => 'tags#index', :as => :tags
   get 'tags/:id' => 'tags#show', :as => :tag
   
   get 'archives/:year/:month' => 'archives#index', :as => :month_archives
   get 'archives/:year' => 'archives#index', :as => :year_archives
+
+  devise_for :users
+  get 'users/:id' => 'users#show', :as => :user
+  put 'my-account' => 'users#update', :as => :my_account
+  get 'my-account' => 'users#my_account', :as => :my_account
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

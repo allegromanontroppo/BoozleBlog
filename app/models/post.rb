@@ -1,42 +1,30 @@
 class Post < ActiveRecord::Base
   
 	belongs_to :user
-	has_many :comments, :dependent => :delete_all
-	has_many :tags, :dependent => :delete_all 
-	has_many :images, :dependent => :delete_all 
-	has_many :videos, :dependent => :delete_all 
-
-	validates_presence_of :title
-	validates_associated :comments
-#	validates_associated :tag
-	validates_associated :images
-	validates_associated :videos
+	has_many :comments, :dependent => :destroy
+	has_many :tags,     :dependent => :destroy 
+	has_many :photos,   :dependent => :destroy, :class_name => 'Image'
+	has_many :videos,   :dependent => :destroy 
 	
-	accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => lambda { |v| v[:embed].blank? }
+	validates :title, :presence => true
+	
+	accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => lambda { |i| i[:embed].blank? }
 	accepts_nested_attributes_for :videos, :allow_destroy => true, :reject_if => lambda { |v| v[:embed].blank? }
 	
-	def self.latest
-	  
-	  first :order => "created_at desc", :include => [:comments, :user, :tags, :videos, :images] 
-	  
-	end
-	
-	def self.teasers(number_to_return = 6)
-	  
-	  all :order => "created_at desc", :offset => 1, :limit => number_to_return
-
+	def self.latest(limit = nil)
+    posts = order('id desc').includes(:comments, :tags, :videos, :photos)
+    posts = posts.limit(limit) if limit
+    posts
 	end
 	
 	def self.find_by_tag(tag)
-	  
-	  all :conditions => ["id in (select post_id from tags where tag like ?)", tag], :order => "created_at DESC",  :include => [:comments, :user, :tags]
-	
+	  posts = where('id in (select post_id from tags where tag like ?)', tag).order('id DESC').includes(:comments, :tags)
 	end
 	
-	def self.archive
+	def self.archives
 	  
-	  posts = all :select => "created_at", :order => "created_at DESC"
-
+	  posts = select('created_at').order('id DESC')
+	  
     archive = []
 
 	  year_count = posts.group_by{|post| post.created_at.beginning_of_year}.map do |year| 
@@ -54,15 +42,11 @@ class Post < ActiveRecord::Base
 	end
 	
 	def self.find_by_year(year)
-	  
-	  	  all :conditions => { :created_at => (year)..(year + 1.year) }, :order => "created_at", :include => [:comments, :user, :tags]
-	  
+	  where(:created_at => (year)..(year + 1.year)).order('created_at').includes(:comments, :user, :tags)
 	end
 	
 	def self.find_by_month(month)
-	  
-	  all :conditions => { :created_at => (month)..(month + 1.month) }, :order => "created_at", :include => [:comments, :user, :tags]
-	  
+  	where(:created_at => (month)..(month + 1.month)).order('created_at').includes(:comments, :user, :tags)
 	end
 
 	def to_param
@@ -70,27 +54,19 @@ class Post < ActiveRecord::Base
 	end
 
 	def date_pretty
-		self[:created_at].strftime("%A #{self[:created_at].day.ordinalize} %B %Y")
+		self.created_at.strftime("%A #{self[:created_at].day.ordinalize} %B %Y")
 	end
 	
 	def previous_post
-	  if @previous_post.nil?
-  	    @previous_post = self.class.first(:conditions => ["created_at < ?", created_at], :order => "created_at desc")
-	  end
-	  @previous_post
+	  @previous_post ||= self.class.where("created_at < ?", created_at).order("created_at desc").first
 	end
 
 	def next_post
-	  if @next_post.nil?
-	    @next_post = self.class.first(:conditions => ["created_at > ?", created_at], :order => "created_at asc")
-	  end
-	  @next_post
+	  @next_post ||= self.class.where("created_at > ?", created_at).order("created_at asc").first
 	end
 		
 	def allowed_to_edit_or_delete?(current_user)
-	  
-	  (current_user.is_super_user || current_user.id == self[:user_id] ) unless current_user.nil?
-	  
+	  current_user.nil? ? false : (current_user.is_super_user || current_user.id == self.user_id )
 	end
 	
 end

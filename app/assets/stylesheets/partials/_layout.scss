@@ -1,0 +1,56 @@
+
+
+body{
+  background-color: $background-color;
+  
+  @media(min-width: $phone){
+    background-image: image_url('octotile.png');
+  }
+}
+
+.container-fluid{
+  margin: 0 auto;
+}
+
+header{
+  
+  margin: 10px 0;
+  
+  .span12{
+    text-align: center;
+  }
+}
+
+footer{
+  margin-bottom: 100px;
+}
+
+#main{
+  @include bordered-zone;
+  padding: 20px;
+}
+
+section{
+  
+  img, iframe{
+    max-width: 100%;
+  }
+
+  &.post{
+    margin: 15px 0;
+  }
+}
+
+.avatar{
+  width: 60px;
+}
+
+.videos, .photos{
+  width: 100%;
+  margin: 20px 0;
+  
+  & > img{
+    @include border-radius(5px);
+  }
+  
+}

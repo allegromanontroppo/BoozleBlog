@@ -2,7 +2,6 @@ class Tag < ActiveRecord::Base
   belongs_to :post 
 
   attr_accessible :tag
-
   validates_presence_of :tag 
 
   before_save do
@@ -10,8 +9,7 @@ class Tag < ActiveRecord::Base
   end
   
   def self.list 
-    
-    all :select => "tag, count(*) as count", :order => "tag", :group => "tag"
+    select('tag, count(*) as count').order('tag').group('tag')
   
   end
 

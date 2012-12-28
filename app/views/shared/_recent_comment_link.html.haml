@@ -1,1 +1,1 @@
-%li #{link_to "#{recent_comment.user.name}", recent_comment.user} commented on #{link_to "#{recent_comment.post.title}", post_path(recent_comment.post, :anchor => "comment_#{recent_comment.id}") }
+%li #{link_to "#{comment.user.name}", comment.user} commented on #{link_to "#{comment.post.title}", post_path(comment.post, :anchor => "comment_#{comment.id}") }

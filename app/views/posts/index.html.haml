@@ -1,6 +1,2 @@
-%div
-	= render :partial => 'post', :object => @latest_post
-
-#teasers
-
-	= render :partial => 'teasers_row', :collection => @teaser_posts, :as => :posts
+= render :partial => @posts, :spacer_template => 'shared/spacer'
+  

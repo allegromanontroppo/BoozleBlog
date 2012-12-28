@@ -1,4 +1,3 @@
 %li= archives_year_link year[:year], year[:count]
-%ul
-	= render :partial => 'shared/archive_month_link', :collection => year[:months], :as => :month
+%ul.unstyled= render :partial => 'shared/archive_month_link', :collection => year[:months], :as => :month
 	
