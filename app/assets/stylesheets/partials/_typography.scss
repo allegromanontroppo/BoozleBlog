@@ -31,11 +31,11 @@ h1 {
   
   @include bordered-zone;
 
-  font-size: 2.6em;
+  font-size: 2.1em;
   padding: 2px 15px 2px 64px;
   
   @media(min-width: $phone){
-    font-size: 4em;
+    font-size: 3em;
     display: inline-block;
   }
   @media(min-width: $tablet){
