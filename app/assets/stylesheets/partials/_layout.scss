@@ -16,6 +16,14 @@ header{
   
   margin: 10px 0;
   
+  @media(min-width: $phone){
+    margin: 20px 0;
+  }
+  @media(min-width: $tablet){
+    margin: 30px 0;
+  }
+  
+  
   .span12{
     text-align: center;
   }

@@ -46,6 +46,10 @@ h1 {
   min-height: 64px;
   line-height: 64px;
   background: white image_url('logo.png') no-repeat 5px 50%;
+  
+  header &{
+    margin-bottom: 0;
+  }
 }
 
 h2 {
