@@ -11,11 +11,7 @@ class Post < ActiveRecord::Base
 	accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => lambda { |i| i[:embed].blank? }
 	accepts_nested_attributes_for :videos, :allow_destroy => true, :reject_if => lambda { |v| v[:embed].blank? }
 	
-	def self.latest(limit = nil)
-    posts = order('id desc').includes(:comments, :tags, :videos, :photos)
-    posts = posts.limit(limit) if limit
-    posts
-	end
+	default_scope order('id desc')
 	
 	def self.find_by_tag(tag)
 	  posts = where('id in (select post_id from tags where tag like ?)', tag).order('id DESC').includes(:comments, :tags)

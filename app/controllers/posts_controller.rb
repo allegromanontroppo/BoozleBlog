@@ -6,7 +6,13 @@ class PostsController < SideBarController
 
   # GET /posts
   def index
-    @posts = Post.latest(7)
+    
+    @posts = Post.paginate(:page => params[:page], :per_page => 5).includes(:user, :tags, :photos, :videos)
+    
+    if request.xhr?
+      return render :partial => @posts, :spacer_template => 'shared/spacer'
+    end
+    
   end
 
   # GET /posts/1

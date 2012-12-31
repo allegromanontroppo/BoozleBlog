@@ -10,4 +10,5 @@
 //= require comments
 //= require alert_close
 //= require showcase
+//= require infinite_scroll
 

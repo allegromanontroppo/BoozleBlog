@@ -1,11 +1,16 @@
 #= require libs/jquery.aw-showcase
 #= require libs/jquery.imagesloaded.js
 
-$ ->
+
+$ -> applyShowcase('body')
+
+
+window.applyShowcase = (selector) ->
   
-  $('.photos a > img').unwrap()
-  
-  $('.showcase').each (i, showcase) ->
+  $selector = $(selector)
+
+  $selector.find('.photos a > img').unwrap()
+  $selector.find('.showcase').each (i, showcase) ->
     
     $showcase = $(showcase)
     dfd = $showcase.imagesLoaded()
