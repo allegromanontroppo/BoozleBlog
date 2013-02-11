@@ -1,17 +1,25 @@
 class Post < ActiveRecord::Base
   
+  module EnumerateEmbeds
+    def each_embed(&block)
+      map(&:embed).each do |embed|
+        block.call embed
+      end
+    end
+  end
+  
 	belongs_to :user
 	has_many :comments, :dependent => :destroy
 	has_many :tags,     :dependent => :destroy 
-	has_many :photos,   :dependent => :destroy, :class_name => 'Image'
-	has_many :videos,   :dependent => :destroy 
+	has_many :photos,   :dependent => :destroy, :class_name => 'Image', :extend => EnumerateEmbeds
+	has_many :videos,   :dependent => :destroy, :extend => EnumerateEmbeds
 	
 	validates :title, :presence => true
 	
 	accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => lambda { |i| i[:embed].blank? }
 	accepts_nested_attributes_for :videos, :allow_destroy => true, :reject_if => lambda { |v| v[:embed].blank? }
 	
-	default_scope order('created_at desc')
+	default_scope includes('comments').order('created_at desc')
 	
 	def self.find_by_tag(tag)
 	  posts = where('id in (select post_id from tags where tag like ?)', tag).order('id DESC').includes(:comments, :tags)

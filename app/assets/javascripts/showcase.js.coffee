@@ -16,8 +16,7 @@ window.applyShowcase = (selector) ->
     dfd = $showcase.imagesLoaded()
     dfd.done ->
       $showcase.awShowcase(
-        content_width:			  $showcase.width() #- 90
-        fit_to_parent:			  false
+        fit_to_parent:			  true
         auto:					        false
         interval:				      3000
         continuous:				    true
@@ -27,8 +26,8 @@ window.applyShowcase = (selector) ->
         tooltip_icon_height:	32
         tooltip_offsetx:		  18
         tooltip_offsety:		  0
-        arrows:					      false
-        buttons:				      false
+        arrows:					      true
+        buttons:				      true
         btn_numbers:			    false
         keybord_keys:			    true
         mousetrace:				    false # Trace x and y coordinates for the mouse */

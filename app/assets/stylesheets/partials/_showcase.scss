@@ -4,7 +4,7 @@
 /* This class is removed after the showcase is loaded */
 /* Assign the correct showcase height to prevent loading jumps in IE */
 
-$showcase-background: $background-color;
+$showcase-background: #eee; // $background-color;
 
 .showcase-load {
   height: 470px;
@@ -24,6 +24,8 @@ $showcase-background: $background-color;
   position: relative;
   margin: auto;
   
+  @include border-radius(2px);
+  
 }
 
 .showcase-content-container {
@@ -42,18 +44,24 @@ $showcase-background: $background-color;
 }
 
 .showcase-arrow-previous {
-  left: -60px;
+  z-index: 100;
+  left: 10px;
   &:hover {
     background-position: 0px -34px;
   }
 }
 
 .showcase-arrow-next {
-  right: -56px;
+  z-index: 100;
+  right: 10px;
   background-position: -34px 0;
   &:hover {
     background-position: -34px -34px;
   }
+}
+
+iframe{
+  max-width: 100%;
 }
 
 /* Content */
@@ -124,7 +132,7 @@ div.showcase-tooltip {
     font-size: 12px;
     color: #444444;
     &.active {
-      color: #fff;
+      color: #aaa;
     }
   }
 }

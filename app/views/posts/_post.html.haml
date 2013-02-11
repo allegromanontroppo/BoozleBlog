@@ -1,4 +1,4 @@
-%section.post
+%section.post.clearfix
 
   %a{ :href => post_path(post) }
     %h2= post.title
@@ -7,13 +7,13 @@
     #{ post.body }
 
   .videos
-    - post.videos.map(&:embed).each do |video|
+    - post.videos.each_embed do |video|
       = video.html_safe
   
   .photos
     - if post.photos.size > 1
       .showcase
-        - post.photos.map(&:embed).each do |photo|
+        - post.photos.each_embed do |photo|
           .showcase-slide
             .showcase-content
               = photo.html_safe
@@ -21,9 +21,11 @@
               = photo.html_safe
               .showcase-thumbnail-cover
     - else
-      - post.photos.map(&:embed).each do |photo|
+      - post.photos.each_embed do |photo|
         = photo.html_safe
-    
   
-%p= link_to "Posted #{ post.date_pretty }", post
+  %small
+    = link_to "Posted #{ post.date_pretty }", post
+    |
+    = link_to pluralize(post.comments.length, 'Comment'), post_path(post, :anchor => 'comments')
 
