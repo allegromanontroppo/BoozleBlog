@@ -9,6 +9,8 @@ $ ->
     getPage = ->
       is_getting = yes
       
+      promise = jQuery.Deferred()
+      
       request = $.get('/', page: ++page_number)
       request.complete -> is_getting = no
       request.success (data) -> 
@@ -16,14 +18,20 @@ $ ->
         unless is_exhausted = data.length is 0
           $infinite_scroll_container.append('<hr>' + data)
           applyShowcase($infinite_scroll_container)
+          promise.resolve(yes)
         else
-          $('#next_page').hide()
+          promise.resolve(no)
           
+      return promise
   
     $('<button>',
       id: 'next_page'
       html: 'See more'
     ).on('click', ->
-      getPage() unless is_getting or is_exhausted
+      unless is_getting or is_exhausted
+        $this = $(@)
+        $this.hide()
+        getPage().done (success) -> $this.show() if success
+        
     ).insertAfter($infinite_scroll_container)
       

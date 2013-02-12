@@ -27,7 +27,7 @@ window.applyShowcase = (selector) ->
         tooltip_offsetx:		  18
         tooltip_offsety:		  0
         arrows:					      true
-        buttons:				      true
+        buttons:				      false
         btn_numbers:			    false
         keybord_keys:			    true
         mousetrace:				    false # Trace x and y coordinates for the mouse */
