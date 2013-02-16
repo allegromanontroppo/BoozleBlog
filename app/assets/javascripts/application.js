@@ -11,4 +11,5 @@
 //= require alert_close
 //= require showcase
 //= require infinite_scroll
+//= require fitvid
 

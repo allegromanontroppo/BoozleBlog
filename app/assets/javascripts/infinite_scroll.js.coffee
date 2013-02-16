@@ -13,11 +13,11 @@ $ ->
       
       request = $.get('/', page: ++page_number)
       request.complete -> is_getting = no
-      request.success (data) -> 
-        data = $.trim(data)
-        unless is_exhausted = data.length is 0
-          $infinite_scroll_container.append('<hr>' + data)
-          applyShowcase($infinite_scroll_container)
+      request.success (new_content) -> 
+        new_content = $.trim(new_content)
+        unless is_exhausted = new_content.length is 0
+          $infinite_scroll_container.append('<hr>' + new_content)
+          $(document).trigger('infinite-scroll', $infinite_scroll_container)
           promise.resolve(yes)
         else
           promise.resolve(no)

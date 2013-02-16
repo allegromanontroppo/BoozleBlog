@@ -9,9 +9,7 @@ class PostsController < SideBarController
     
     @posts = Post.paginate(:page => params[:page], :per_page => 5).includes(:user, :tags, :photos, :videos)
     
-    if request.xhr?
-      return render :partial => @posts, :spacer_template => 'shared/spacer'
-    end
+    return render :partial => @posts, :spacer_template => 'shared/spacer' if request.xhr?
     
   end
 
