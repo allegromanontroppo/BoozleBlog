@@ -1,4 +1,5 @@
-%h2 Sign in
+.page-header
+  %h1 Sign in
 
 = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-horizontal' } do |f|
 
@@ -17,6 +18,5 @@
           Remember me
           = f.check_box :remember_me 
 
-  .control-group
-    .controls= f.submit "Sign in", :class => 'btn btn-primary btn-large'
+  .form-actions= f.submit "Sign in", :class => 'btn btn-primary btn-large'
   

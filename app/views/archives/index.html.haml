@@ -1,4 +1,4 @@
 .well
-  %h2 #{pluralize(@posts.count, 'post')} from #{@title}
+  %h1 #{pluralize(@posts.count, 'post')} from #{@title}
 	
 = render :partial => 'posts/post', :collection => @posts, :spacer_template => 'shared/spacer'

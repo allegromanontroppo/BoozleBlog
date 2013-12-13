@@ -1,5 +1,5 @@
 - @title = 'All tags'
 
-%h2 All tags
+%h1 All tags
 - @tags.each do |tag|
   %p= link_to "#{tag.tag} (#{tag.count})", tag_path(tag)

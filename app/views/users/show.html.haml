@@ -3,7 +3,7 @@
 .media
   = image_tag "avatars/#{ @user.avatar }", :alt => @user.name, :class => 'pull-left avatar'
   .media-body
-    %h2
+    %h1
       = @user.name	
       - if @user.id == current_user.id
         %span (That's you!)

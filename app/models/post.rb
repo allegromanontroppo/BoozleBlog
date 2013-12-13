@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   
   module EnumerateEmbeds
     def each_embed(&block)
-      map(&:embed).each do |embed|
+      reverse.map(&:embed).each do |embed|
         block.call embed
       end
     end

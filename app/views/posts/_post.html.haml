@@ -1,16 +1,17 @@
-%section.post.clearfix
+%article
 
-  %a{ :href => post_path(post) }
-    %h2= post.title
+  .page-header
+    %a{ :href => post_path(post) }
+      %h1= post.title
 
   :markdown
     #{ post.body }
 
-  .videos
+  %section.videos
     - post.videos.each_embed do |video|
       = video.html_safe
   
-  .photos
+  %section.photos
     - if post.photos.size > 1
       .showcase
         - post.photos.each_embed do |photo|
@@ -28,4 +29,6 @@
     = link_to "Posted #{ post.date_pretty }", post
     |
     = link_to pluralize(post.comments.length, 'Comment'), post_path(post, :anchor => 'comments')
+    
+
 

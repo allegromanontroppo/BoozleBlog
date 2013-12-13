@@ -12,4 +12,5 @@
 //= require showcase
 //= require infinite_scroll
 //= require fitvid
+//= require libs/bootstrap
 

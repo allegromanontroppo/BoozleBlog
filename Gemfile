@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem "rails"
+gem "rails", "~> 3.2.14"
 gem "rake"
 gem "rack"
 gem "haml"
@@ -31,7 +31,8 @@ gem "rdiscount", "~> 1.6.8"
 
 group :production do
   gem 'execjs'
-  #gem 'therubyracer'
+  gem 'therubyracer'
+  #gem 'mysql2'
 end
 
 group :test do

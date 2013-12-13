@@ -1,8 +1,12 @@
 - @title = 'My Account'
 
-%h2 My Account
+.page-header
+  %h1 My Account
 
-%p= link_to "Log out", destroy_user_session_path
+%p
+  = link_to "Log out", destroy_user_session_path, :class => 'btn btn-danger'
+  %br
+  %br
 
 = form_for @user, :url => my_account_path do |f|
   .control-group
@@ -13,5 +17,6 @@
     %label.checkbox
       = f.check_box :notify_when_new_comment 
       Send me an email when there is a new comment
-  .control-group
+      
+  .form-actions
     = f.submit "Save changes", :class => 'btn btn-primary'

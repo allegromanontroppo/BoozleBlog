@@ -10,6 +10,7 @@ body{
 
 .container-fluid{
   margin: 0 auto;
+  max-width: 1200px
 }
 
 header{
@@ -21,11 +22,6 @@ header{
   }
   @media(min-width: $tablet){
     margin: 30px 0;
-  }
-  
-  
-  .span12{
-    text-align: center;
   }
 }
 
@@ -71,4 +67,8 @@ section{
   text-transform: uppercase;
   color:$heading-color;
   font-size: 24px;
+}
+
+.thumbnails .selected{
+  outline: $border-color 2px solid;
 }

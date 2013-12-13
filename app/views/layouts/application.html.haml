@@ -10,31 +10,27 @@
 
     = favicon_link_tag
     = stylesheet_link_tag 'application'
+    = yield :stylesheets
     = csrf_meta_tag
 
   %body
     %header
       .container-fluid
-        .row-fluid
-          .span12
-            %a{ :href => root_path }
-              %h1 Boozle Blog
+        %a{ :href => root_path }
+          %h1 Boozle Blog
     
     .container-fluid
       - flash.each do|key, value|
-        .row-fluid
-          .span8.offset2.alert{ :class => "alert-#{key}" }
-            %button.close{ :type => 'button', :data => { :dismiss => 'alert' } } &times;
-            %h3= value
+        .alert{ :class => "alert-#{key}" }
+          %button.close{ :type => 'button', :data => { :dismiss => 'alert' } } &times;
+          %h3= value
     
-      .row-fluid
-        .span12
-          #main= content_for?(:content) ? yield(:content) : yield
+      #main= content_for?(:content) ? yield(:content) : yield
 
     %footer
 
-    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'
+    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
     :javascript
-      window.jQuery || document.write('<script src="/javascripts/lib/jquery.1.8.3.min.js"><\/script>')
+      window.jQuery || document.write('<script src="/javascripts/lib/jquery.1.9.1.min.js"><\/script>')
     = yield :javascripts
     = javascript_include_tag 'application'
