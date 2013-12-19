@@ -7,7 +7,7 @@ class PostsController < SideBarController
   # GET /posts
   def index
     
-    @posts = Post.paginate(:page => params[:page], :per_page => 2).includes(:comments, :photos, :videos)
+    @posts = Post.paginate(:page => params[:page], :per_page => 5).includes(:comments, :photos, :videos)
     
     return render :partial => @posts, :spacer_template => 'shared/spacer' if request.xhr?
     
@@ -36,7 +36,7 @@ class PostsController < SideBarController
   def create
     
     @post = current_user.posts.build params[:post] 
-    params[:tags_list].split(',').select{ |tag| tag.present? }.map(&:strip).each do |tag|
+    params[:tags_list].split(',').select(&:present?).map(&:strip).each do |tag|
       @post.tags.build :tag => tag
     end  
   
@@ -53,8 +53,8 @@ class PostsController < SideBarController
   # PUT /posts/1.xml
   def update
         
-    params[:tags_list].split(',').select{ |tag| tag.present? }.map(&:strip).each do |tag|
-      @post.tags.find_or_create_by_tag tag.strip
+    params[:tags_list].split(',').select(&:present?).map(&:strip).each do |tag|
+      @post.tags.find_or_create_by_tag tag
     end
    
     if @post.update_attributes params[:post] 

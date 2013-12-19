@@ -20,11 +20,13 @@
             %h1 The Boozle Blog
     
     - flash.each do|key, value|
+      - if key == :notice then key = 'success' end
+      - if key == :error  then key = 'warning' end
       .row
-        .column.medium-12.medium-centered
-          .alert-box{ :class => "#{key}" }
+        .column
+          .alert-box{ :class => key, 'data-alert' => '' }
             %a.close{ :href => '#' } &times;
-            %h3= value
+            %p= value
   
     #main= content_for?(:content) ? yield(:content) : yield
 

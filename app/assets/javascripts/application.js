@@ -6,9 +6,13 @@
 //
 
 //= require jquery_ujs
-//= require libs/foundation
 //= require comments
 //= require masonry
+
+//= require foundation/foundation
+//= require foundation/foundation.alert
+//= require foundation/foundation.clearing
+//= require foundation/foundation.tab
 
 $(function(){
   $(document).foundation();
