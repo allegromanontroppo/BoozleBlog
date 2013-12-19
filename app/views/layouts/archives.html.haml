@@ -1,6 +1,6 @@
 - content_for :content do
-  .row-fluid
-    .span9= yield
-    .span3= render :partial => 'shared/side_bar'
+  .row
+    .large-9.column= yield
+    .large-3.column= render :partial => 'shared/side_bar'
 
 = render :template => 'layouts/application'

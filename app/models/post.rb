@@ -11,12 +11,12 @@ class Post < ActiveRecord::Base
 	belongs_to :user
 	has_many :comments, :dependent => :destroy
 	has_many :tags,     :dependent => :destroy 
-	has_many :photos,   :dependent => :destroy, :class_name => 'Image', :extend => EnumerateEmbeds
+	has_many :photos,   :dependent => :destroy, :class_name => 'Image'
 	has_many :videos,   :dependent => :destroy, :extend => EnumerateEmbeds
 	
 	validates :title, :presence => true
 	
-	accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => lambda { |i| i[:embed].blank? }
+	accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => lambda { |i| i[:url].blank? }
 	accepts_nested_attributes_for :videos, :allow_destroy => true, :reject_if => lambda { |v| v[:embed].blank? }
 	
 	default_scope includes('comments').order('created_at desc')

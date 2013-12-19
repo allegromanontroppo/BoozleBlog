@@ -1,9 +1,54 @@
 
-@import 'bootstrap';
+@import 'normalize';
+@import 'foundation';
 
-@import 'partials/base';
-@import 'partials/layout';
-@import 'partials/typography';
-@import 'partials/showcase';
+@mixin padded($top: 20px, $bottom: 20px){
+  padding-top: rem-calc($top);
+  padding-bottom: rem-calc($bottom);
+}
 
-@import 'bootstrap-responsive';
+header, footer{
+  background: pink;
+  @include padded;
+}
+
+header{
+  margin-bottom: 1.5em;
+  
+  h1{
+    font-weight: bold;
+  }
+}
+
+footer{
+  min-height: 100px;
+}
+
+#main{
+  @include padded;
+}
+
+article{
+  margin-bottom: rem-calc(10px);
+}
+
+textarea{
+  min-height: 10em;
+}
+
+.content{
+  width: 100%;
+}
+
+#photos-picasa .selected img{
+  outline: 3px solid $primary-color;
+}
+
+/***** Fix Block Grid and Clearing Compatibility *****/
+[class*="block-grid-"] li {
+  margin-right:0 !important;
+}
+.clearing-blackout li {
+  clear:inherit !important;
+  position: static !important;
+}

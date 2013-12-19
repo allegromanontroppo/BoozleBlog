@@ -5,32 +5,33 @@
     %meta{ 'http-equiv' => "X-UA-Compatible", :content => 'IE=edge,chrome=1' }
     %title= ["Boozle Blog", @title].flatten.select{ |s| s.present? }.reverse.join(" | ")
     %meta{ :name=> 'viewport', :content => 'width=device-width, initial-scale=1.0' }
-    /[if lt IE 9]
-      %script{ :src => '//html5shim.googlecode.com/svn/trunk/html5.js' }
 
     = favicon_link_tag
     = stylesheet_link_tag 'application'
     = yield :stylesheets
+    = javascript_include_tag 'libs/modernizr'
     = csrf_meta_tag
 
   %body
     %header
-      .container-fluid
-        %a{ :href => root_path }
-          %h1 Boozle Blog
+      .row
+        .column
+          %a{ :href => root_path }
+            %h1 The Boozle Blog
     
-    .container-fluid
-      - flash.each do|key, value|
-        .alert{ :class => "alert-#{key}" }
-          %button.close{ :type => 'button', :data => { :dismiss => 'alert' } } &times;
-          %h3= value
-    
-      #main= content_for?(:content) ? yield(:content) : yield
+    - flash.each do|key, value|
+      .row
+        .column.medium-12.medium-centered
+          .alert-box{ :class => "#{key}" }
+            %a.close{ :href => '#' } &times;
+            %h3= value
+  
+    #main= content_for?(:content) ? yield(:content) : yield
 
     %footer
 
-    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'
     :javascript
-      window.jQuery || document.write('<script src="/javascripts/lib/jquery.1.9.1.min.js"><\/script>')
+      window.jQuery || document.write('<script src="/javascripts/lib/jquery.2.0.3.min.js"><\/script>')
+    = javascript_include_tag 'application'  
     = yield :javascripts
-    = javascript_include_tag 'application'

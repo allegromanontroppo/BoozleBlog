@@ -681,7 +681,7 @@ $.fn.animateHighlight = (highlightColor, duration) ->
 $ ->
   
   syncNumberOfComments = ->
-    number_of_comments = $('#comments .media').length
+    number_of_comments = $('#comments .comment').length
     $('#comments h3').html "#{ number_of_comments } comment#{ if number_of_comments is 1 then '' else 's'}"
   
   $('#comments form').on('ajax:before', (e) ->
@@ -695,18 +695,17 @@ $ ->
   ).on('ajax:success', (e, data) ->
    
     $form = $(e.target)
-    $form.before(data + '<hr>')
+    $form.before(data)
     
     syncNumberOfComments()
     
-    $('#comments .media:last').animateHighlight()
+    $('#comments .comment:last').animateHighlight()
     $form.find('textarea').val('')
   )
   
   $('#comments').on('ajax:before', 'a[data-method="delete"]', (e) -> 
   
-    $(e.target).closest('.media').slideUp ->
-      $(this).next('hr').remove()
+    $(e.target).closest('.comment').slideUp ->
       $(this).remove()
     
       syncNumberOfComments()

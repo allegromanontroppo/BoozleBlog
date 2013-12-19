@@ -1,22 +1,23 @@
-.page-header
-  %h1 Sign in
-
-= form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-horizontal' } do |f|
-
-  .control-group
-    = f.label :email, :class => 'control-label'
-    .controls= f.email_field :email, :class => 'span9', :required => true
+.row
+  .column.large-10.large-offset-1
+    %h1 Sign in
     
-  .control-group
-    = f.label :password, :class => 'control-label'
-    .controls= f.password_field :password, :class => 'span9', :required => true
+    .panel
+      = form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
 
-  - if devise_mapping.rememberable?
-    .control-group
-      .controls
-        %label.checkbox
-          Remember me
-          = f.check_box :remember_me 
+        .row
+          .medium-2.small-3.columns= f.label :email, :class => 'right inline'
+          .medium-10.small-9.columns= f.email_field :email, :required => true, :placeholder => 'Email address'
+    
+        .row
+          .medium-2.small-3.columns= f.label :password, :class => 'right inline'
+          .medium-10.small-9.columns= f.password_field :password, :required => true
+    
+        - if devise_mapping.rememberable?  
+          .row
+            .medium-2.small-3.columns= f.label :remember_me, :class => 'right inline'
+            .medium-10.small-9.columns= f.check_box :remember_me
 
-  .form-actions= f.submit "Sign in", :class => 'btn btn-primary btn-large'
+        .row
+          .column.small-9.small-offset-3.medium-2.medium-offset-2= f.submit "Sign in", :class => 'button large'
   

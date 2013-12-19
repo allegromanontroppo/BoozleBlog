@@ -1,4 +1,4 @@
-.well
-  %h1 #{pluralize(@posts.count, 'post')} from #{@title}
+.panel
+  %h1.text-center #{pluralize(@posts.count, 'post')} from #{@title}
 	
 = render :partial => 'posts/post', :collection => @posts, :spacer_template => 'shared/spacer'

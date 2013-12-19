@@ -130,6 +130,8 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.4)
+    will_paginate-foundation (5.3.3)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -153,3 +155,4 @@ DEPENDENCIES
   turn
   uglifier
   will_paginate
+  will_paginate-foundation

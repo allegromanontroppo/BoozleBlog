@@ -20,6 +20,7 @@ group :assets do
 end
 
 gem "rdiscount", "~> 1.6.8"
+gem 'will_paginate-foundation'
 # Use unicorn as the web server
 # gem 'unicorn'
 

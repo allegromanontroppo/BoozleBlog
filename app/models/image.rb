@@ -1,8 +1,8 @@
 class Image < ActiveRecord::Base
 	belongs_to :post
-	attr_accessible :embed
+	attr_accessible :url, :thumbnail
 	
-	validates :embed, :presence => true
+	validates :url, :presence => true
 end
 
 # == Schema Information

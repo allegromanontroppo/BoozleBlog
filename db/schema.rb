@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110909195922) do
+ActiveRecord::Schema.define(:version => 20131217213027) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20110909195922) do
 
   create_table "images", :force => true do |t|
     t.integer  "post_id"
-    t.string   "embed"
+    t.string   "url"
     t.string   "thumbnail"
     t.datetime "created_at"
     t.datetime "updated_at"

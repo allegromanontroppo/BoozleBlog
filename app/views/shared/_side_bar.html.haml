@@ -1,17 +1,25 @@
-.well
-  %nav
-    %ul.unstyled
-      %li= link_to 'My Account', my_account_path
-      %li= link_to('Create New Post', new_post_path) if current_user.can_post 
 
-  %nav
-    %h4 Comments
-    %ul.unstyled= render :partial => 'shared/recent_comment_link', :collection => Comment.recent, :as => :comment 
+#sidebar.show-for-medium-up.panel
 
-  %nav
-    %h4 Archives
-    %ul.unstyled= render :partial => 'shared/archive_year_link', :collection => Post.archives, :as => :year
+  .row
+    .large-12.medium-4.column
 
-  %nav
-    %h4 Tags
-    %ul.unstyled= render :partial => 'shared/tag_link', :collection => @tags || Tag.list, :as => :tag 
+      %nav
+        %ul.no-bullet
+          %li= link_to 'My Account', my_account_path
+          %li= link_to('Create New Post', new_post_path, :class => 'show-for-medium-up') if current_user.can_post 
+
+      %nav
+        %h4 Comments
+        %ul.no-bullet= render :partial => 'shared/recent_comment_link', :collection => Comment.recent, :as => :comment 
+
+    .large-12.medium-4.column
+  
+      %nav
+        %h4 Archives
+        %ul.no-bullet= render :partial => 'shared/archive_year_link', :collection => Post.archives, :as => :year
+
+    .large-12.medium-4.column
+      %nav
+        %h4 Tags
+        %ul.no-bullet= render :partial => 'shared/tag_link', :collection => @tags || Tag.list, :as => :tag 

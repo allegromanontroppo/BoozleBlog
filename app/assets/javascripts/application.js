@@ -6,11 +6,10 @@
 //
 
 //= require jquery_ujs
-
+//= require libs/foundation
 //= require comments
-//= require alert_close
-//= require showcase
-//= require infinite_scroll
-//= require fitvid
-//= require libs/bootstrap
+//= require masonry
 
+$(function(){
+  $(document).foundation();
+});

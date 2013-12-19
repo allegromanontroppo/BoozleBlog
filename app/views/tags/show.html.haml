@@ -1,6 +1,6 @@
 - @title = "Posts tagged with #{@tag}"
 
-.well
-  %h1 #{ pluralize(@posts.count, 'post') } tagged with #{@tag}
+.panel
+  %h1.text-center #{ pluralize(@posts.count, 'post') } tagged with #{@tag}
 
 = render :partial => 'posts/post', :collection => @posts, :spacer_template => 'shared/spacer'

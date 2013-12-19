@@ -1,34 +1,27 @@
 %article
 
-  .page-header
-    %a{ :href => post_path(post) }
-      %h1= post.title
+  %a{ :href => post_path(post) }
+    %h1= post.title
 
   :markdown
     #{ post.body }
 
-  %section.videos
-    - post.videos.each_embed do |video|
-      = video.html_safe
+  - if post.videos.any?
+    %section.videos
+      - post.videos.each_embed do |video|
+        .flex-video= video.html_safe
   
-  %section.photos
-    - if post.photos.size > 1
-      .showcase
-        - post.photos.each_embed do |photo|
-          .showcase-slide
-            .showcase-content
-              = photo.html_safe
-            .showcase-thumbnail
-              = photo.html_safe
-              .showcase-thumbnail-cover
-    - else
-      - post.photos.each_embed do |photo|
-        = photo.html_safe
+  - if post.photos.any?
+    %section.photos
+      %ul.medium-block-grid-3.large-block-grid-2.clearing-thumbs{ 'data-clearing' => '' }
+        - post.photos.each do |photo|
+          %li
+            %a.th{ :href => photo.url }= image_tag photo.thumbnail
   
-  %small
+  %p.text-center
     = link_to "Posted #{ post.date_pretty }", post
     |
     = link_to pluralize(post.comments.length, 'Comment'), post_path(post, :anchor => 'comments')
-    
+  
 
 

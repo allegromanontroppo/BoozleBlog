@@ -1,2 +1,3 @@
 = render :partial => @posts, :spacer_template => 'shared/spacer'
   
+.pagination-centered= will_paginate @posts, renderer: FoundationPagination::Rails

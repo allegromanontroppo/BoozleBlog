@@ -1,4 +1,4 @@
-= form_for @post, :html => { :class => 'form-horizontal' } do |f|
+= form_for @post do |f|
 
   - if @post.errors.any?
     .alert.alert-error
@@ -8,52 +8,52 @@
         -  @post.errors.full_messages.each do |msg|
           %li= msg
 
-  .control-group
-    = f.label :title, "This post's title", :class => 'control-label'
-    .controls= f.text_field :title, :class => 'input-block-level', :required => true
+  = f.label :title, "This post's title"
+  = f.text_field :title, :required => true
 
-  .control-group
-    = f.label :body, "This post's contents", :class => 'control-label'
-    .controls= f.text_area :body, :class => 'input-block-level', :rows => 10
+  = f.label :body, "This post's contents"
+  = f.text_area :body
 
-  .control-group
-    = label_tag :tags_list, "This post's tags", :class => 'control-label'
-    .controls= text_field_tag :tags_list, @post.tags.map(&:tag).join(", "), :class => 'input-block-level'
+  = label_tag :tags_list, "This post's tags"
+  = text_field_tag :tags_list, @post.tags.map(&:tag).join(", ")
 
   = f.fields_for :videos do |video_form|	
-    .control-group	
-      = video_form.label :embed, "Embed a video", :class => 'control-label'
-      .controls
-        ~ video_form.text_area :embed, :class => 'input-block-level', :rows => 5
-        %label.checkbox
-          = video_form.check_box '_destroy'
-          Delete
+    %fieldset
+      %legend Video
+  	
+      = video_form.label :embed
+      ~ video_form.text_area :embed
+      %label.checkbox
+        = video_form.check_box '_destroy'
+        Delete
 
-  %ul.nav.nav-tabs
-    %li
-      %a{ :href => '#photos-embed', 'data-toggle' => 'tab' } Direct Embed
-    %li.active
-      %a{ :href => '#photos-picasa', 'data-toggle' => 'tab' } Picasa
+  %dl.tabs{ 'data-tab' => ''}    
+    %dd.active
+      %a{ :href => '#photos-picasa' } Picasa
+    %dd
+      %a{ :href => '#photos-embed' } Direct Embed
 
-  .tab-content
-    #photos-embed.tab-pane
+  .tabs-content
+    #photos-embed.content
       = f.fields_for :photos do |image_form|
-        .control-group	
-          = image_form.label :embed, "Embed a photo", :class => 'control-label'
-          .controls
-            ~ image_form.text_area :embed, :class => 'input-block-level', :rows => 5
-            %label.checkbox
-              = image_form.check_box '_destroy'
-              Delete
+        %fieldset
+          %legend Photo
+          = image_form.label :url
+          ~ image_form.text_area :url
+          = image_form.label :thumbnail
+          ~ image_form.text_area :thumbnail
+          %label.checkbox
+            = image_form.check_box '_destroy'
+            Delete
 
-    #photos-picasa.tab-pane.active  
-      .control-group
-        = label :picasa_album, 'Album', :class => 'control-label'
-        .controls= select_tag :picasa_album, nil, :class => 'input-block-level', :prompt => "Select"
+    #photos-picasa.content.active  
+      
+      = label :picasa_album, 'Album'
+      = select_tag :picasa_album, nil, :prompt => "Select"
         
-      %ul#photos-picasa-gallery.thumbnails
+      %ul#photos-picasa-gallery.small-block-grid-2.medium-block-grid-3
 
-  .form-actions= f.submit :class => 'btn btn-primary btn-large'
+  = f.submit :class => 'button large'
 
 = content_for :javascripts do
   = javascript_include_tag 'picasa_importer.js'

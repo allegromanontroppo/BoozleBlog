@@ -1,9 +1,11 @@
-.media{ :id => ['comment', comment.id] }
-  %a.pull-left{ :href => user_path(comment.user) }= image_tag "avatars/#{ comment.user.avatar }", :alt => comment.user.name, :class => 'avatar'
-  .media-body
-    %h5
-      On #{ comment.date_pretty }, #{ link_to comment.user.name, user_path(comment.user) } said:
+.row.comment{ :id => ['comment', comment.id] }
+  .medium-10.column
     
-    = simple_format comment.body
+    %blockquote
+      = simple_format comment.body
+      %cite #{ link_to comment.user.name, user_path(comment.user) } on #{ comment.date_pretty }
 
-    %p= link_to('Delete', remove_comment_post_path(@post, comment), :method => :delete, :confirm => "Are you sure?", :remote => true) if comment.allowed_to_delete?(current_user)
+    %p= link_to('Delete', remove_comment_post_path(@post, comment), :class => 'button tiny alert', :method => :delete, :confirm => "Are you sure?", :remote => true) if comment.allowed_to_delete?(current_user)
+
+  .medium-2.column.hide-for-small-only
+    %a{ :href => user_path(comment.user) }= image_tag "avatars/#{ comment.user.avatar }", :alt => comment.user.name, :class => 'avatar'

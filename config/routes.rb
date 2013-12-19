@@ -5,9 +5,6 @@ Rebeccaholland::Application.routes.draw do
       post 'add_comment'
       delete 'remove_comment/:comment_id' => 'posts#remove_comment', :as => 'remove_comment'
     end
-    collection do
-      get 'import_from_picasa'
-    end
   end
   
   get 'tags/' => 'tags#index', :as => :tags
