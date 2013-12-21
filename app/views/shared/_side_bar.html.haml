@@ -2,7 +2,7 @@
 #sidebar.show-for-medium-up.panel.radius
 
   .row
-    .large-12.medium-4.column
+    .large-12.medium-6.column
 
       %nav
         %ul.no-bullet
@@ -13,13 +13,13 @@
         %h4 Comments
         %ul.no-bullet= render :partial => 'shared/recent_comment_link', :collection => Comment.recent, :as => :comment 
 
-    .large-12.medium-4.column
+    .large-12.medium-3.column
   
       %nav
         %h4 Archives
         %ul.no-bullet= render :partial => 'shared/archive_year_link', :collection => Post.archives, :as => :year
 
-    .large-12.medium-4.column
+    .large-12.medium-3.column
       %nav
         %h4 Tags
         %ul.no-bullet= render :partial => 'shared/tag_link', :collection => @tags || Tag.list, :as => :tag 

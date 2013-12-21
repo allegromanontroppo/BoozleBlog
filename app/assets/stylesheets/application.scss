@@ -4,7 +4,7 @@ $air-force-blue: #5D8AA8;
 $roundel-blue: #00257d;
 $roundel-red: #cc1225;
 
-@import url(http://fonts.googleapis.com/css?family=Playfair+Display+SC:700&text=TheBoozleBlog);
+@import url(http://fonts.googleapis.com/css?family=Stardos+Stencil:400&text=TheBoozleBlog);
 
 @import 'normalize';
 @import 'foundation';
@@ -22,20 +22,23 @@ header, footer{
 header{
   margin-bottom: 1.5em;
   h1{
-    font-family: 'Playfair Display SC';
-    font-size: 4rem;
-    font-weight: bold;
+    font-family: 'Stardos Stencil';
     color: white;
-    text-align: center;
   }
   
-  
-  @media #{ $large-up } {
+  @media #{ $medium-up } {
     .column{  
       background-image: url(image_path('200px-RAF_roundel.png'));
       background-repeat: no-repeat;
       background-size: auto 100% ;
-      background-position: #{ $column-gutter /2 }  50%;
+      background-position: #{ $column-gutter /2 } 50%;
+    }
+  }
+  
+  @media #{ $large-up } {
+    
+    h1{
+      font-size: 4.5rem;
     }
   }
 }
@@ -48,17 +51,12 @@ footer{
   @include padded;
 }
 
-#sidebar{
- // background: $second;
-}
-
 article{
   margin-bottom: rem-calc(10px);
 }
 
 .avatar{
-  //border-radius: $global-radius;
-  box-shadow: 0 0 3px 5px $roundel-blue;
+  box-shadow: 0 0 3px 5px $air-force-blue;
 }
 
 textarea{
