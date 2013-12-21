@@ -5,7 +5,7 @@ gem "rake"
 gem "rack"
 gem "haml"
 gem "rails_autolink", "~> 1.0.2"
-gem "devise"
+gem "devise", "~> 2.2.8"
 
 gem 'jquery-rails'
 gem 'will_paginate'

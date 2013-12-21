@@ -1,10 +1,13 @@
 - @title = @user.name
 
 .row
-  .column.small-2
-    = image_tag "avatars/#{ @user.avatar }", :alt => @user.name
-  .column.small-10
-    %h1
-      = @user.name	
-      - if @user.id == current_user.id
-        %small (That's you!)
+  .column.small-12
+    .panel
+      .row
+        .column.small-4.medium-2
+          = image_tag "avatars/#{ @user.avatar }", :alt => @user.name, :class => 'avatar left'
+        .column.small-8.medium-10
+          %h1
+            = @user.name	
+            - if @user.id == current_user.id
+              %small (That's you!)
