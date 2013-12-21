@@ -53,9 +53,10 @@ $row-width: rem-calc(1200);
 
 // We use these as default colors throughout
 // $primary-color: #008CBA;
-$primary-color: $fourth;
+$primary-color: $roundel-blue;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
+$alert-color: $roundel-red;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
@@ -616,6 +617,7 @@ $primary-color: $fourth;
 
 // We use these to control the background and border styles
 // $panel-bg: darken(#fff, 5%);
+//$panel-bg: $first; //darken(#fff, 1%);
 // $panel-border-style: solid;
 // $panel-border-size: 1px;
 
@@ -629,6 +631,7 @@ $primary-color: $fourth;
 
 // We use these to set default font colors
 // $panel-font-color: #333;
+// $panel-font-color: white;
 // $panel-font-color-alt: #fff;
 
 // $panel-header-adjust: true;

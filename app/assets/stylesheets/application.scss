@@ -1,10 +1,8 @@
 // https://kuler.adobe.com/create/color-wheel/?base=2&rule=Complementary&selected=4&name=My%20Kuler%20Theme&mode=rgb&rgbvalues=0.36470588235294116,0.5411764705882353,0.6588235294117647,0.9482538449729345,0.9793015379891573,1,0.8482538449729345,0.9393015379891255,1,0.7,0.4526015998347005,0.0984823211665084,1,0.9375882749485679,0.8482538449729345&swatchOrder=0,1,2,3,4
 
-$first: #5D8AA8;
-$second: #F2FAFF;
-$third: #D8F0FF;
-$fourth: #B27319;
-$fifth: #FFEFD8;
+$air-force-blue: #5D8AA8;
+$roundel-blue: #00257d;
+$roundel-red: #cc1225;
 
 @import url(http://fonts.googleapis.com/css?family=Playfair+Display+SC:700&text=TheBoozleBlog);
 
@@ -17,7 +15,7 @@ $fifth: #FFEFD8;
 }
 
 header, footer{
-  background: $first;
+  background: $air-force-blue;
   @include padded(30px, 30px);
 }
 
@@ -27,7 +25,7 @@ header{
     font-family: 'Playfair Display SC';
     font-size: 4rem;
     font-weight: bold;
-    color: $second;
+    color: white;
     text-align: center;
   }
   
@@ -37,7 +35,7 @@ header{
       background-image: url(image_path('200px-RAF_roundel.png'));
       background-repeat: no-repeat;
       background-size: auto 100% ;
-      background-position: 0.9375rem 50%;
+      background-position: #{ $column-gutter /2 }  50%;
     }
   }
 }
@@ -50,13 +48,17 @@ footer{
   @include padded;
 }
 
+#sidebar{
+ // background: $second;
+}
+
 article{
   margin-bottom: rem-calc(10px);
 }
 
 .avatar{
   //border-radius: $global-radius;
-  box-shadow: 0 0 3px 5px $first;
+  box-shadow: 0 0 3px 5px $roundel-blue;
 }
 
 textarea{
