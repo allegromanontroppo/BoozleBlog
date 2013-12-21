@@ -13,7 +13,7 @@
   
   - if post.photos.any?
     %section.photos
-      %ul.medium-block-grid-3.large-block-grid-2.clearing-thumbs{ 'data-clearing' => '' }
+      %ul.medium-block-grid-3.large-block-grid-3.clearing-thumbs{ 'data-clearing' => '' }
         - post.photos.each do |photo|
           %li
             %a.th{ :href => photo.url }= image_tag photo.thumbnail
